@@ -62,9 +62,13 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/categories">分类</a></li>
+	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 				<li><a href="/archives/index.html">归档</a></li>
+	        
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">标签</a></li>
 	        
 			</ul>
 		</nav>
@@ -129,6 +133,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -147,11 +155,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 20%"><a href="/categories">分类</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/archives/index.html">归档</a></li>
+					<li style="width: 20%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+		        
+					<li style="width: 20%"><a href="/archives/index.html">归档</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/%E9%9A%8F%E7%AC%94/">标签</a></li>
 		        
 				</ul>
 			</nav>
@@ -185,8 +197,10 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="MarkDown基本语法学习"><a href="#MarkDown基本语法学习" class="headerlink" title="MarkDown基本语法学习"></a>MarkDown基本语法学习</h1><a id="more"></a>
+	  
+
+ 
+ <h1 id="MarkDown基本语法学习"><a href="#MarkDown基本语法学习" class="headerlink" title="MarkDown基本语法学习"></a>MarkDown基本语法学习</h1><a id="more"></a>
 
 <h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><p><strong>语法：</strong> <em>#加空格</em> 后面的文本即为标题</p>
 <p><strong>示例</strong></p>
@@ -329,40 +343,8 @@
 <h2 id="十、-转义字符"><a href="#十、-转义字符" class="headerlink" title="十、 转义字符"></a>十、 转义字符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\\	反斜杠</span><br><span class="line">\&#96;	反引号</span><br><span class="line">\*	星号</span><br><span class="line">\_	下划线</span><br><span class="line">\&#123;\&#125;	大括号</span><br><span class="line">\[\]	中括号</span><br><span class="line">\(\)	小括号</span><br><span class="line">\#	#号</span><br><span class="line">\+	加号</span><br><span class="line">\-	减号</span><br><span class="line">\.	英文句号</span><br><span class="line">\!	感叹号</span><br></pre></td></tr></table></figure>
 
 
-      
+ 
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/wechatpay.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
@@ -579,6 +561,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
