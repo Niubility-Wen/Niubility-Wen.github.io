@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020 | Niubility-Wen</title>
+  <title>Proxy模式 | Niubility-Wen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="博文的blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Niubility-Wen">
-<meta property="og:url" content="http://example.com/archives/2020/index.html">
+  <meta name="description" content="Proxy模式一、什么是Proxy​    Proxy是“代理人”的意思">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Proxy模式">
+<meta property="og:url" content="http://example.com/2020/09/22/Proxy%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Niubility-Wen">
-<meta property="og:description" content="博文的blog">
+<meta property="og:description" content="Proxy模式一、什么是Proxy​    Proxy是“代理人”的意思">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://qgtdbhgkz.hn-bkt.clouddn.com/Proxy%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%B1%BB%E5%9B%BE.png">
+<meta property="article:published_time" content="2020-09-22T08:02:26.000Z">
+<meta property="article:modified_time" content="2020-09-22T08:04:52.065Z">
 <meta property="article:author" content="Niubility-Wen">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://qgtdbhgkz.hn-bkt.clouddn.com/Proxy%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%B1%BB%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="Niubility-Wen" type="application/atom+xml">
   
@@ -161,238 +165,201 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Proxy模式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Proxy模式
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/22/Proxy%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
+
+        
+        <a href="/2020/09/22/Proxy%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
   	<time datetime="2020-09-22T08:02:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/22/Proxy%E6%A8%A1%E5%BC%8F/">Proxy模式</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Proxy模式"><a href="#Proxy模式" class="headerlink" title="Proxy模式"></a>Proxy模式</h1><h2 id="一、什么是Proxy"><a href="#一、什么是Proxy" class="headerlink" title="一、什么是Proxy"></a>一、什么是Proxy</h2><p>​    <strong>Proxy</strong>是“代理人”的意思<a id="more"></a>，它指的是代替别人进行工作的人。当不一定需要本人亲自工作时，就可以以寻找代理人去完成工作。但代理人毕竟只是代理人，能代替本人做的事终究是有限的。因此，代理人遇到无法自己解决的事情时就会去找本人解决该问题。</p>
+<p>​    在面向对象程序设计中，“<strong>本人</strong>”  和  “<strong>代理人</strong>” 都是对象。如果 “<strong>本人</strong>” 对象太忙了，有些工作无法自己亲自完成，就将其交给 “<strong>代理人</strong>” 对象来负责。</p>
+<h2 id="二、Proxy模式中登场的角色"><a href="#二、Proxy模式中登场的角色" class="headerlink" title="二、Proxy模式中登场的角色"></a>二、Proxy模式中登场的角色</h2><p>​    在Proxy模式中有以下登场的角色</p>
+<hr>
+<h5 id="1、Subject（主体）又叫抽象角色"><a href="#1、Subject（主体）又叫抽象角色" class="headerlink" title="1、Subject（主体）又叫抽象角色"></a>1、Subject（主体）又叫抽象角色</h5><blockquote>
+<p>​    Subject角色定义了使用Proxy角色和RealSubject角色之间具有一致性的接口。由于存在Subject角色，所以Client角色不必在意它所使用的的角色究竟是Proxy角色还是RealSubject角色。</p>
+</blockquote>
+<hr>
+<h5 id="2、Proxy（代理人）"><a href="#2、Proxy（代理人）" class="headerlink" title="2、Proxy（代理人）"></a>2、Proxy（代理人）</h5><blockquote>
+<p>​    Proxy角色会尽量处理来自Client角色的请求。只有当自己不能处理时，它才会将工作交给RealSubject角色。</p>
+<p>​    Proxy角色只有在必要时才会生成RealSubject角色。Proxy角色实现了在Subject角色中定义的接口（API）。</p>
+</blockquote>
+<hr>
+<h5 id="3、RealSubject（实际主体）也叫真实角色"><a href="#3、RealSubject（实际主体）也叫真实角色" class="headerlink" title="3、RealSubject（实际主体）也叫真实角色"></a>3、RealSubject（实际主体）也叫真实角色</h5><blockquote>
+<p>“本人” RealSubject角色会在“代理人”Proxy角色无法胜任工作时出场。它与Proxy角色一样，也实现了在Subject角色中定义的接口（API）。</p>
+</blockquote>
+<hr>
+<h5 id="4、Client（请求者）"><a href="#4、Client（请求者）" class="headerlink" title="4、Client（请求者）"></a>4、Client（请求者）</h5><blockquote>
+<p>使用Proxy模式的角色。</p>
+<p>注意！在GoF书中，Client角色并不包含在Proxy模式中。</p>
+</blockquote>
+<hr>
+<h2 id="三、Proxy模式的类图"><a href="#三、Proxy模式的类图" class="headerlink" title="三、Proxy模式的类图"></a>三、Proxy模式的类图</h2><p><img src="http://qgtdbhgkz.hn-bkt.clouddn.com/Proxy%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%B1%BB%E5%9B%BE.png" alt="Proxy模式的类图"></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/wechatpay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/09/22/Proxy%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/22/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-09-22T04:34:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/22/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">动态代理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/22/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">动态代理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Proxy%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">Proxy模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFProxy"><span class="toc-number">1.1.</span> <span class="toc-text">一、什么是Proxy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Proxy%E6%A8%A1%E5%BC%8F%E4%B8%AD%E7%99%BB%E5%9C%BA%E7%9A%84%E8%A7%92%E8%89%B2"><span class="toc-number">1.2.</span> <span class="toc-text">二、Proxy模式中登场的角色</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E3%80%81Subject%EF%BC%88%E4%B8%BB%E4%BD%93%EF%BC%89%E5%8F%88%E5%8F%AB%E6%8A%BD%E8%B1%A1%E8%A7%92%E8%89%B2"><span class="toc-number">1.2.0.0.1.</span> <span class="toc-text">1、Subject（主体）又叫抽象角色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E3%80%81Proxy%EF%BC%88%E4%BB%A3%E7%90%86%E4%BA%BA%EF%BC%89"><span class="toc-number">1.2.0.0.2.</span> <span class="toc-text">2、Proxy（代理人）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3%E3%80%81RealSubject%EF%BC%88%E5%AE%9E%E9%99%85%E4%B8%BB%E4%BD%93%EF%BC%89%E4%B9%9F%E5%8F%AB%E7%9C%9F%E5%AE%9E%E8%A7%92%E8%89%B2"><span class="toc-number">1.2.0.0.3.</span> <span class="toc-text">3、RealSubject（实际主体）也叫真实角色</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4%E3%80%81Client%EF%BC%88%E8%AF%B7%E6%B1%82%E8%80%85%EF%BC%89"><span class="toc-number">1.2.0.0.4.</span> <span class="toc-text">4、Client（请求者）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Proxy%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%B1%BB%E5%9B%BE"><span class="toc-number">1.3.</span> <span class="toc-text">三、Proxy模式的类图</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/18/Jsp%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-09-18T00:48:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/18/Jsp%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0/">Jsp基础学习</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="archive-article-date">
-  	<time datetime="2020-09-17T18:22:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">数据库系统概述</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/18/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2020-09-17T17:17:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/18/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hexo博客搭建</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/15/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-09-14T17:29:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/15/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">MarkDown基本语法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2020-09-14T01:00:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/14/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/14/hello-world/" class="archive-article-date">
-  	<time datetime="2020-09-14T00:27:12.135Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -415,8 +382,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
