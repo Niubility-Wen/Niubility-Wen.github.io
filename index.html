@@ -185,21 +185,99 @@
     <article id="post-Java类加载机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/24/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">JVM类加载机制</a>
+    </h1>
+  
+
+        
+        <a href="/2021/09/24/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2021-09-24T04:34:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-24</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
 	  
 
-  <p>title: JVM类加载机制<br>date: 2021-09-24 12:34:37<br>tags:<br>    - Java<br>    - JVM<br>categoris: “JVM”<br>keywords: JVM,Java<br>toc: true</p>
+ 
+ <a id="more"></a>说起Java，其最核心的就是**JVM（Java Virtual Machine）**,基于JVM的语言有很多，除了Java还有***Kotlin***,***Scala***,***Groovy***等等。
+
+<p>​    首先我们要了解一件事，就是我们自己编写的Java代码是如何在各种各样的操作系统中运行的？相信大家都知道，是**.java文件<strong>通过</strong>javac编译器<strong>编译成</strong>.class文件<strong>，.class文件又被称为</strong>字节码文件<strong>（是一种中间码），然后又JVM加载字节码，运行时有</strong>解释器**将字节码解释为一行行机器码来执行。</p>
+<p>​    在程序运行期间，即时编译器能会针对热点代码将该部分字节码编译成机器码以获得更高的执行效率，在整个运行时，解释器和即时编译器的相互配合，使Java程序几乎能达到和编译型语言一样的执行速度。</p>
+<p>​    大部分普通程序员能够接触到的应该就是<font color='red'>JVM加载字节码这个过程，这个过程被称为<strong>类加载</strong></font>。站在高处去看类加载的目的，就是把一份被javac编译器编译过得class文本文件通过加载，生成某种形式的<strong>Class</strong>数据结构进入内存，程序可以调用这个数据结构来构造成object（对象），这个过程是在运行时进行的，这也是Java动态拓展性的根基。</p>
+<p>​    我们来看一张图</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4Az2LQ"><img src="https://z3.ax1x.com/2021/09/14/4Az2LQ.png" alt="4Az2LQ.png"></a></p>
+<ol>
+<li>这张图表现一个类的<font color="red"><strong>声明周期</strong></font>，网站一点的话，我们可以在最开始加上javac编译阶段。而<font color="red"><strong>“类加载”只包括加载、连接。初始化</strong></font>这三个过程。</li>
+<li>需要<font color="red"><strong>区分“类加载”与“加载”</strong></font>，加载只是类加载的第一个环节。</li>
+<li><font color="red"><strong>解析部分是灵活的</strong></font>，它可以在初始化环节之后再进行，实现所谓的“后期绑定”，<font color="red"><strong>其他环节的顺序不可改变</strong></font>。</li>
+</ol>
+<h2 id="加载阶段"><a href="#加载阶段" class="headerlink" title="加载阶段"></a>加载阶段</h2><p>首先看加载这个阶段:</p>
+<p>​    用一句话描述加载过程：加载是一个<font color="red"><strong>读取Class文件</strong></font>，将其转化成某种<font color="red"><strong>静态数据结构</strong></font>存储在<font color="red"><strong>方法区</strong></font>内，并在堆中生成一个便于用户调用的<font color="red">**<code>java.lang.Class</code>**</font>类型的对象的过程。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4EFeYj"><img src="https://z3.ax1x.com/2021/09/14/4EFeYj.png" alt="4EFeYj.png"></a></p>
+<p>注意点：</p>
+<p>这里的class文件不一定指的是本地文件，泛指<font color="red"><strong>各种来源的二进制流</strong></font>。比如说来自于网络，来自于数据库，甚至是即使生成的class文件，比如说像很著名的动态代理技术就是用即时计算出来的class，然后实例化代理对象。</p>
+<h2 id="连接：验证阶段"><a href="#连接：验证阶段" class="headerlink" title="连接：验证阶段"></a>连接：验证阶段</h2><p>​    验证阶段其实是有<strong>文件格式验证</strong>，<strong>元数据、字节码验证</strong>，<strong>符号引用验证</strong>这三个步骤的。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4Ek7qK"><img src="https://z3.ax1x.com/2021/09/14/4Ek7qK.png" alt="4Ek7qK.png"></a></p>
+<h3 id="文件格式验证"><a href="#文件格式验证" class="headerlink" title="文件格式验证"></a>文件格式验证</h3><p>其验证阶段中第一个步骤对<strong>文件格式验证</strong>其实是发生在加载阶段的，如果通过才能顺利加载。顺利加载后，此时方法区虽然已经存在了该class的静态结构，堆中也存在了该class类型的对象，但这并不代表着JVM已经完全认可了这个类，如果程序想要使用这个类，那么就必须进行<strong>连接</strong>，而连接的第一步就是进一步对这个类进行验证，我们来看看到底对方法区内的class静态结构进行了哪些方面的验证。</p>
+<h3 id="元数据、字节码验证"><a href="#元数据、字节码验证" class="headerlink" title="元数据、字节码验证"></a>元数据、字节码验证</h3><p>第一点 元数据的验证</p>
+<p>第二点 字节码的验证</p>
+<p>​    这两点简单概括来说就是对class静态结构进行语法和语义上的分析，保证其不会产生危害虚拟机的行为。</p>
+<p>​    如果这两个步骤验证通过，那么虚拟机会姑且认为该class是安全的，但是这并不意味着验证已经完全结束了，还有一道对<strong>符号引用进行验证</strong>的步骤。</p>
+<h3 id="符号引用阶段"><a href="#符号引用阶段" class="headerlink" title="符号引用阶段"></a>符号引用阶段</h3><p>​    符号引用阶段是在解析阶段内发生的，而解析阶段其实可以在初始化阶段之前或者初始化阶段之后进行，所以，验证其实包含了很多个步骤分散在各个不同的阶段内的。</p>
+<h2 id="连接：准备阶段"><a href="#连接：准备阶段" class="headerlink" title="连接：准备阶段"></a>连接：准备阶段</h2><p>​    在元数据字节码验证通过之后，JVM会暂时姑且认为该class是安全的，这时候将会进入准备阶段。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4EE6NF"><img src="https://z3.ax1x.com/2021/09/14/4EE6NF.png" alt="4EE6NF.png"></a></p>
+<p>​    准备阶段做的处理其实不复杂，就是为该类型中定义的静态变量赋默认值（0值）。</p>
+<p>注意：虚拟机内存规范中的定义了方法区这种抽象概念，HotSpot这种主流虚拟机在<strong>JDK8之前使用了”永久代”*<em>这种具体的</em>实现方式*来实现方法区，</strong>在JDK8及以后，弃用了“永久代”这种实现方式，采用”元空间”**这种直接内存来取代。</p>
+<p>​    我们常常看到有人说JDK8及以后采用“元空间”来替代“方法区”，这种说法是完全错误的，因为<strong>方法区是抽象概念，元空间是实现方法</strong>。</p>
+<p>​    那应该怎么理解呢？在JDK8之前，类的元信息，常量池，静态变量等存储在“永久代”这种具体实现中，而在JDK8及以后，常量池、静态变量被移除“方法区”，转移到了堆中，元信息等依然保留在方法区内，当具体的存储方式，改成了元空间。</p>
+<blockquote>
+<p>简单记：方法区是抽象概念，“永久代”和“元空间”是其具体的实现方式</p>
+</blockquote>
+<h2 id="连接：-解析"><a href="#连接：-解析" class="headerlink" title="连接： 解析"></a>连接： 解析</h2><p>​    在准备阶段完成之后，就来到了解析阶段。</p>
+<p>​    解析阶段主要做的就是将符号引用替换为直接引用。</p>
+<p>​    当一个Java类被编译成Class之后，假如这个类称之为A，并且A中引入了B，那么在编译阶段A是不知道B有没有被编译的，而且此时B也一定没有被加载，所以A肯定不知道B的实际地址，那么A怎么才能找到B呢？此时在A的class文件中，将用一个字符串S来代表B的地址，S就被称为<strong>符号引用</strong>。</p>
+<p>​    在运行时，如果A方法了类加载，到了解析阶段会发现B还未被加载，那么将会触发B的类加载，将B加载到虚拟机中，此时A中B的符号引用将会被替换成B的实际地址，这被称为<strong>直接引用</strong>，这样A就能真正的调用到B了，但是事情没有那么简单，Java可以通过后期绑定的方式来实现多态，那么后期绑定这里的概念是如何实现的呢？其实就是这里的<strong>动态解析</strong>。</p>
+<p>​    如果A调用的B是一个具体的实现类，那么就称为<strong>静态解析</strong>，因为解析的目标类很明确，假如上层Java代码使用了多态，这里B可能是一个抽象类或者接口，那么B可能有两个具体的实现类C和D，此时B的具体实现并不明确，当然也就不知道使用哪个具体类的直接引用来进行替换，既然不知道那就等一等吧，直到运行过程中发生了调用，此时虚拟机调用栈中将会得到具体的类型信息，这时候再进行解析，就能用明确的直接引用来替换符号引用。这就为什么<strong>有时候解析阶段会发生在初始化阶段之后</strong>，这就方式动态解析，用它来实现了后期绑定。</p>
+<p>​    底层对应了<code>invokedynamic</code>这条字节码指令。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4EZde0"><img src="https://z3.ax1x.com/2021/09/14/4EZde0.png" alt="4EZde0.png"></a></p>
+<p>​    当解析步骤完成,意味着整个连接部分的完成，这也就是说外部加载的Java类这时候以及成功引入到我们的程序中了。</p>
+<h2 id="初始化阶段"><a href="#初始化阶段" class="headerlink" title="初始化阶段"></a>初始化阶段</h2><p>​    初始化阶段比较容易理解，简单概括就是此时会判断代码中是否存在主动资源的初始化操作，如果有那么就执行。</p>
+<p>​    主动资源的初始化操作不是指的构造函数，而是class层面的，比如说成员变量的显示赋值动作，静态变量的显示赋值动作，以及静态代码块的逻辑。</p>
+<p>​    而只有显示调用new指令才会调用构造函数进行对象的实例化，这是对象层面的。</p>
+<blockquote>
+<p>初始化阶段是用户来主导整个初始化部分</p>
+<p>而连接阶段是JVM来主导的</p>
+</blockquote>
+<h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><p>​    从JVM角度来看，加载阶段读取二进制流这个动作以及初始化阶段这两个部分，是开放了主导给用户的，用户可以进行自由控制。</p>
+<p>​    而剩下的所有部分都是由虚拟机全权包揽由其内部来完成。</p>
+
  
 
     </div>
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/14/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/09/24/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">展开全文 >></a>
         </p>
       
 
@@ -554,11 +632,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaWeb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaWeb</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1027,11 +1105,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1039,11 +1113,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jsp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jsp</a>
+                <a href="javascript:void(0)" class="js-tag color4">MarkDown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
