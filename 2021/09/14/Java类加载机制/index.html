@@ -11,20 +11,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>浅谈Java中的内部类 | Niubility-Wen</title>
+  <title>Niubility-Wen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、 内部类概述1. 内部类（inner class）的定义 内部类是定义在另一个类中的类">
+  <meta name="description" content="title: JVM类加载机制date: 2021-09-24 12:34:37tags:    - Java    - JVMcategoris: “JVM”keywords: JVM,Javatoc: true">
 <meta property="og:type" content="article">
-<meta property="og:title" content="浅谈Java中的内部类">
-<meta property="og:url" content="http://example.com/2021/09/14/%E6%B5%85%E8%B0%88Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/index.html">
+<meta property="og:title" content="Niubility-Wen">
+<meta property="og:url" content="http://example.com/2021/09/14/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="Niubility-Wen">
-<meta property="og:description" content="一、 内部类概述1. 内部类（inner class）的定义 内部类是定义在另一个类中的类">
+<meta property="og:description" content="title: JVM类加载机制date: 2021-09-24 12:34:37tags:    - Java    - JVMcategoris: “JVM”keywords: JVM,Javatoc: true">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-13T18:03:30.000Z">
-<meta property="article:modified_time" content="2021-09-14T04:58:18.943Z">
+<meta property="og:image" content="http://example.com/2021/09/14/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6.assets/image-20210914184023830.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/09/14/4Az2LQ.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/09/14/4EFeYj.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/09/14/4Ek7qK.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/09/14/4EE6NF.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/09/14/4EZde0.png">
+<meta property="article:published_time" content="2021-09-14T14:46:11.733Z">
+<meta property="article:modified_time" content="2021-09-14T14:49:34.762Z">
 <meta property="article:author" content="Niubility-Wen">
 <meta property="article:tag" content="Niubility-Wen 前端博客，后端博客，java,sql,html5,springboot,springcloud">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/09/14/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6.assets/image-20210914184023830.png">
   
     <link rel="alternative" href="/atom.xml" title="Niubility-Wen" type="application/atom+xml">
   
@@ -182,108 +189,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-浅谈Java中的内部类" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java类加载机制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      浅谈Java中的内部类
-    </h1>
-  
-
-        
-        <a href="/2021/09/14/%E6%B5%85%E8%B0%88Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2021-09-13T18:03:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-14</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
 	  
 
  
- <h1 id="一、-内部类概述"><a href="#一、-内部类概述" class="headerlink" title="一、 内部类概述"></a>一、 内部类概述</h1><h2 id="1-内部类（inner-class）的定义"><a href="#1-内部类（inner-class）的定义" class="headerlink" title="1. 内部类（inner class）的定义"></a>1. 内部类（inner class）的定义</h2><blockquote>
-<p><strong>内部类是定义在另一个类中的类</strong></p>
-</blockquote>
+ <p>title: JVM类加载机制<br>date: 2021-09-24 12:34:37<br>tags:<br>    - Java<br>    - JVM<br>categoris: “JVM”<br>keywords: JVM,Java<br>toc: true</p>
 <a id="more"></a>
-
-<h2 id="2-内部类分类"><a href="#2-内部类分类" class="headerlink" title="2. 内部类分类"></a>2. 内部类分类</h2><p>根据内部类所在的位置将内部类进行分类：</p>
-<ul>
-<li>成员内部类<ul>
-<li>实例成员内部类（实例内部类）<ul>
-<li>静态成员内部类（静态内部类）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>局部内部类<ul>
-<li>标准局部内部类（局部内部类）<ul>
-<li>匿名局部内部类（匿名内部类）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="二、-实例成员内部类（实例内部类）"><a href="#二、-实例成员内部类（实例内部类）" class="headerlink" title="二、 实例成员内部类（实例内部类）"></a>二、 实例成员内部类（实例内部类）</h1><blockquote>
-<p>回顾：</p>
-<p>​    当多个方法中存在共同的内容，习惯将共同的内容向上抽取成一个方法，会将该方法声明为私有方法，不能让其对外访问。</p>
-<p>​    当多个类中存在共同的内容，将共同的内容向上抽取成一个类，会将该类声明为抽象类，不能让其对外创建对象。</p>
-<p>​    <strong>当有些类既不是多个子类抽取出来的共性内容的类，该类还需要创建对象，同时该类也不想让外界访问该类，需要成员内部类进行解决。</strong></p>
+<p>​    说起Java，其最核心的就是<strong>JVM（Java Virtual Machine）</strong>,基于JVM的语言有很多，除了Java还有*<strong>Kotlin**<em>,</em></strong>Scala*<strong>,**<em>Groovy</em></strong>等等。</p>
+<p>​    首先我们要了解一件事，就是我们自己编写的Java代码是如何在各种各样的操作系统中运行的？相信大家都知道，是**.java文件<strong>通过</strong>javac编译器<strong>编译成</strong>.class文件<strong>，.class文件又被称为</strong>字节码文件<strong>（是一种中间码），然后又JVM加载字节码，运行时有</strong>解释器**将字节码解释为一行行机器码来执行。</p>
+<p><img src="Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6.assets/image-20210914184023830.png" alt="image-20210914184023830"></p>
+<p>​    在程序运行期间，即时编译器能会针对热点代码将该部分字节码编译成机器码以获得更高的执行效率，在整个运行时，解释器和即时编译器的相互配合，使Java程序几乎能达到和编译型语言一样的执行速度。</p>
+<p>​    大部分普通程序员能够接触到的应该就是<font color='red'>JVM加载字节码这个过程，这个过程被称为<strong>类加载</strong></font>。站在高处去看类加载的目的，就是把一份被javac编译器编译过得class文本文件通过加载，生成某种形式的<strong>Class</strong>数据结构进入内存，程序可以调用这个数据结构来构造成object（对象），这个过程是在运行时进行的，这也是Java动态拓展性的根基。</p>
+<p>​    我们来看一张图</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4Az2LQ"><img src="https://z3.ax1x.com/2021/09/14/4Az2LQ.png" alt="4Az2LQ.png"></a></p>
+<ol>
+<li>这张图表现一个类的<font color="red"><strong>声明周期</strong></font>，网站一点的话，我们可以在最开始加上javac编译阶段。而<font color="red"><strong>“类加载”只包括加载、连接。初始化</strong></font>这三个过程。</li>
+<li>需要<font color="red"><strong>区分“类加载”与“加载”</strong></font>，加载只是类加载的第一个环节。</li>
+<li><font color="red"><strong>解析部分是灵活的</strong></font>，它可以在初始化环节之后再进行，实现所谓的“后期绑定”，<font color="red"><strong>其他环节的顺序不可改变</strong></font>。</li>
+</ol>
+<h2 id="加载阶段"><a href="#加载阶段" class="headerlink" title="加载阶段"></a>加载阶段</h2><p>首先看加载这个阶段:</p>
+<p>​    用一句话描述加载过程：加载是一个<font color="red"><strong>读取Class文件</strong></font>，将其转化成某种<font color="red"><strong>静态数据结构</strong></font>存储在<font color="red"><strong>方法区</strong></font>内，并在堆中生成一个便于用户调用的<font color="red">**<code>java.lang.Class</code>**</font>类型的对象的过程。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4EFeYj"><img src="https://z3.ax1x.com/2021/09/14/4EFeYj.png" alt="4EFeYj.png"></a></p>
+<p>注意点：</p>
+<p>这里的class文件不一定指的是本地文件，泛指<font color="red"><strong>各种来源的二进制流</strong></font>。比如说来自于网络，来自于数据库，甚至是即使生成的class文件，比如说像很著名的动态代理技术就是用即时计算出来的class，然后实例化代理对象。</p>
+<h2 id="连接：验证阶段"><a href="#连接：验证阶段" class="headerlink" title="连接：验证阶段"></a>连接：验证阶段</h2><p>​    验证阶段其实是有<strong>文件格式验证</strong>，<strong>元数据、字节码验证</strong>，<strong>符号引用验证</strong>这三个步骤的。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4Ek7qK"><img src="https://z3.ax1x.com/2021/09/14/4Ek7qK.png" alt="4Ek7qK.png"></a></p>
+<h3 id="文件格式验证"><a href="#文件格式验证" class="headerlink" title="文件格式验证"></a>文件格式验证</h3><p>其验证阶段中第一个步骤对<strong>文件格式验证</strong>其实是发生在加载阶段的，如果通过才能顺利加载。顺利加载后，此时方法区虽然已经存在了该class的静态结构，堆中也存在了该class类型的对象，但这并不代表着JVM已经完全认可了这个类，如果程序想要使用这个类，那么就必须进行<strong>连接</strong>，而连接的第一步就是进一步对这个类进行验证，我们来看看到底对方法区内的class静态结构进行了哪些方面的验证。</p>
+<h3 id="元数据、字节码验证"><a href="#元数据、字节码验证" class="headerlink" title="元数据、字节码验证"></a>元数据、字节码验证</h3><p>第一点 元数据的验证</p>
+<p>第二点 字节码的验证</p>
+<p>​    这两点简单概括来说就是对class静态结构进行语法和语义上的分析，保证其不会产生危害虚拟机的行为。</p>
+<p>​    如果这两个步骤验证通过，那么虚拟机会姑且认为该class是安全的，但是这并不意味着验证已经完全结束了，还有一道对<strong>符号引用进行验证</strong>的步骤。</p>
+<h3 id="符号引用阶段"><a href="#符号引用阶段" class="headerlink" title="符号引用阶段"></a>符号引用阶段</h3><p>​    符号引用阶段是在解析阶段内发生的，而解析阶段其实可以在初始化阶段之前或者初始化阶段之后进行，所以，验证其实包含了很多个步骤分散在各个不同的阶段内的。</p>
+<h2 id="连接：准备阶段"><a href="#连接：准备阶段" class="headerlink" title="连接：准备阶段"></a>连接：准备阶段</h2><p>​    在元数据字节码验证通过之后，JVM会暂时姑且认为该class是安全的，这时候将会进入准备阶段。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4EE6NF"><img src="https://z3.ax1x.com/2021/09/14/4EE6NF.png" alt="4EE6NF.png"></a></p>
+<p>​    准备阶段做的处理其实不复杂，就是为该类型中定义的静态变量赋默认值（0值）。</p>
+<p>注意：虚拟机内存规范中的定义了方法区这种抽象概念，HotSpot这种主流虚拟机在<strong>JDK8之前使用了”永久代”*<em>这种具体的</em>实现方式*来实现方法区，</strong>在JDK8及以后，弃用了“永久代”这种实现方式，采用”元空间”**这种直接内存来取代。</p>
+<p>​    我们常常看到有人说JDK8及以后采用“元空间”来替代“方法区”，这种说法是完全错误的，因为<strong>方法区是抽象概念，元空间是实现方法</strong>。</p>
+<p>​    那应该怎么理解呢？在JDK8之前，类的元信息，常量池，静态变量等存储在“永久代”这种具体实现中，而在JDK8及以后，常量池、静态变量被移除“方法区”，转移到了堆中，元信息等依然保留在方法区内，当具体的存储方式，改成了元空间。</p>
+<blockquote>
+<p>简单记：方法区是抽象概念，“永久代”和“元空间”是其具体的实现方式</p>
 </blockquote>
-<p>​    </p>
-<h2 id="1-学习目的"><a href="#1-学习目的" class="headerlink" title="1. 学习目的"></a>1. 学习目的</h2><p>​    将类声明在类中的成员位置，让其可以被private关键字进行修饰</p>
-<h2 id="2-格式"><a href="#2-格式" class="headerlink" title="2. 格式"></a>2. 格式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 外部类名 </span>&#123;</span><br><span class="line">    [修饰符] <span class="class"><span class="keyword">class</span> 内部类类类名</span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="连接：-解析"><a href="#连接：-解析" class="headerlink" title="连接： 解析"></a>连接： 解析</h2><p>​    在准备阶段完成之后，就来到了解析阶段。</p>
+<p>​    解析阶段主要做的就是将符号引用替换为直接引用。</p>
+<p>​    当一个Java类被编译成Class之后，假如这个类称之为A，并且A中引入了B，那么在编译阶段A是不知道B有没有被编译的，而且此时B也一定没有被加载，所以A肯定不知道B的实际地址，那么A怎么才能找到B呢？此时在A的class文件中，将用一个字符串S来代表B的地址，S就被称为<strong>符号引用</strong>。</p>
+<p>​    在运行时，如果A方法了类加载，到了解析阶段会发现B还未被加载，那么将会触发B的类加载，将B加载到虚拟机中，此时A中B的符号引用将会被替换成B的实际地址，这被称为<strong>直接引用</strong>，这样A就能真正的调用到B了，但是事情没有那么简单，Java可以通过后期绑定的方式来实现多态，那么后期绑定这里的概念是如何实现的呢？其实就是这里的<strong>动态解析</strong>。</p>
+<p>​    如果A调用的B是一个具体的实现类，那么就称为<strong>静态解析</strong>，因为解析的目标类很明确，假如上层Java代码使用了多态，这里B可能是一个抽象类或者接口，那么B可能有两个具体的实现类C和D，此时B的具体实现并不明确，当然也就不知道使用哪个具体类的直接引用来进行替换，既然不知道那就等一等吧，直到运行过程中发生了调用，此时虚拟机调用栈中将会得到具体的类型信息，这时候再进行解析，就能用明确的直接引用来替换符号引用。这就为什么<strong>有时候解析阶段会发生在初始化阶段之后</strong>，这就方式动态解析，用它来实现了后期绑定。</p>
+<p>​    底层对应了<code>invokedynamic</code>这条字节码指令。</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4EZde0"><img src="https://z3.ax1x.com/2021/09/14/4EZde0.png" alt="4EZde0.png"></a></p>
+<p>​    当解析步骤完成,意味着整个连接部分的完成，这也就是说外部加载的Java类这时候以及成功引入到我们的程序中了。</p>
+<h2 id="初始化阶段"><a href="#初始化阶段" class="headerlink" title="初始化阶段"></a>初始化阶段</h2><p>​    初始化阶段比较容易理解，简单概括就是此时会判断代码中是否存在主动资源的初始化操作，如果有那么就执行。</p>
+<p>​    主动资源的初始化操作不是指的构造函数，而是class层面的，比如说成员变量的显示赋值动作，静态变量的显示赋值动作，以及静态代码块的逻辑。</p>
+<p>​    而只有显示调用new指令才会调用构造函数进行对象的实例化，这是对象层面的。</p>
+<blockquote>
+<p>初始化阶段是用户来主导整个初始化部分</p>
+<p>而连接阶段是JVM来主导的</p>
+</blockquote>
+<h2 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h2><p>​    从JVM角度来看，加载阶段读取二进制流这个动作以及初始化阶段这两个部分，是开放了主导给用户的，用户可以进行自由控制。</p>
+<p>​    而剩下的所有部分都是由虚拟机全权包揽由其内部来完成。</p>
 
-<h2 id="3-实例内部类权限访问级别"><a href="#3-实例内部类权限访问级别" class="headerlink" title="3. 实例内部类权限访问级别"></a>3. 实例内部类权限访问级别</h2><p>四种都可以，<strong>推荐使用<code>private</code></strong></p>
-<h2 id="4-创建实例内部类对象的方式"><a href="#4-创建实例内部类对象的方式" class="headerlink" title="4. 创建实例内部类对象的方式"></a>4. 创建实例内部类对象的方式</h2><p>a. 直接声明初始化内部类对象 </p>
-<p>​    （1）<code>外部类类名.内部类类名 内部类对象名 = new 外部类类名().new 内部类类名();</code></p>
-<p>b. 先声明初始化外部类对象，再初始化内部类对象</p>
-<p>​    （1）<code>外部类类名 外部类对象名 = new 外部类类名();</code></p>
-<p>​    （2）<code>外部类类名.内部类类名  内部类对象名 = 外部类对象名.new 内部类类名()</code> </p>
-<h2 id="5-注意事项"><a href="#5-注意事项" class="headerlink" title="5. 注意事项"></a>5. 注意事项</h2><p><strong><em>a.</em></strong> 内部类的字节码文件格式为<code>外部类类名$内部类类名.class</code>，我们在起标识符的时候，避免标识符中出现$，因为$是Java内部类的表示格式</p>
-<p><strong><em>b.</em></strong>如果在测试类中需要使用到外部类对象，需要使用先声明初始化外部类对象，再初始化内部类对象的方式；</p>
-<p>​    如果在测试类中不需要使用到外部类对象，使用直接声明初始化内部类对象的方式即可</p>
-<p><strong><em>c.</em></strong> <strong><em>在实例内部类中可以访问外部类中的所有不同名成员</em></strong></p>
-<p><strong><em>d.</em></strong> 当外部类的实例成员和内部类中的实例成员发生同名的使用，需要使用**<code>外部类类名.this.实例成员变量名</code><strong>或者</strong><code>外部类类名.this.实例成员方法名</code>**</p>
-<p><strong><em>e.</em></strong> 当外部类访问实例内部类，需要外部实例方法中创建内部类对象后才可以进行访问</p>
-<p><strong><em>f.</em></strong> <strong>在外部类中，可以访问实例内部类中的所有实例成员。</strong></p>
-<p><strong><em>g.</em></strong> <strong>在实例内部类中不可以声明静态成员</strong>，因为静态加载时机更早，当静态加载的时候，实例内部类还没有加载，导致报错。</p>
-<p><strong>h.</strong> <strong>内部列中声明的所有静态字段都必须是final，并初始化为一个编译时常量。</strong></p>
-<h1 id="三、静态成员内部类-静态内部类"><a href="#三、静态成员内部类-静态内部类" class="headerlink" title="三、静态成员内部类(静态内部类)"></a>三、静态成员内部类(静态内部类)</h1><h2 id="1-学习目的-1"><a href="#1-学习目的-1" class="headerlink" title="1. 学习目的"></a>1. 学习目的</h2><p>同实例内部类，并需要在成员内部类中声明静态成员，需要使用静态内部类</p>
-<h2 id="2-格式-1"><a href="#2-格式-1" class="headerlink" title="2. 格式"></a>2. 格式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 外部类类名 </span>&#123;</span><br><span class="line">	[权限修饰符] <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> 内部类类名</span>&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="3-静态内部类的权限访问级别"><a href="#3-静态内部类的权限访问级别" class="headerlink" title="3. 静态内部类的权限访问级别"></a>3. 静态内部类的权限访问级别</h2><p>四种权限访问级别都可以，<strong>推荐使用<code>private</code></strong></p>
-<h2 id="4-注意事项"><a href="#4-注意事项" class="headerlink" title="4. 注意事项"></a>4. 注意事项</h2><p><strong>a.</strong> 在静态内部类中可以声明实例成员，如果想访问静态内部类中的实例成员，需要创建静态内部类的实例对象。</p>
-<p><strong>b.</strong> 在静态内部类中的静态方法和静态代码块中无法使用实例变量（和内部类没有联系，是静态的内容）。</p>
-<p><strong>c.</strong> 在静态内部类中可以访问外部类所有的静态成员<strong>（静态代码块除外）。</strong></p>
-<p><strong>d.</strong> 在外部类中可以访问静态内部类中所有的静态成员（<strong>静态代码块除外</strong>，因为静态代码块没有名字,只能加载一次）。</p>
-<p><strong>e.</strong> 只要内部类不需要访问外部类对象，就应该使用静态内部类。</p>
-<p><strong>f.</strong> <strong>在接口中声明的内部类自动是<code>static</code>和<code>public</code></strong></p>
-<h1 id="四、-标准局部内部类（局部内部类）"><a href="#四、-标准局部内部类（局部内部类）" class="headerlink" title="四、 标准局部内部类（局部内部类）"></a>四、 标准局部内部类（局部内部类）</h1><h2 id="1-学习目的-2"><a href="#1-学习目的-2" class="headerlink" title="1. 学习目的"></a>1. 学习目的</h2><p>在一个方法中局部地定义这个类</p>
-<h2 id="2-标准局部内部类权限访问级别"><a href="#2-标准局部内部类权限访问级别" class="headerlink" title="2. 标准局部内部类权限访问级别"></a>2. 标准局部内部类权限访问级别</h2><p>只能是缺省（什么都不写）</p>
-<h2 id="3-格式"><a href="#3-格式" class="headerlink" title="3. 格式"></a>3. 格式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 外部类类名 </span>&#123;</span><br><span class="line">    [权限修饰符] 方法返回值 方法名(形参列表) &#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> 内部类类名 </span>&#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="4-注意事项-1"><a href="#4-注意事项-1" class="headerlink" title="4. 注意事项"></a>4. 注意事项</h2><p>a. 在局部内部类中可以访问外部类中所有<strong>不同名的实例变量</strong></p>
-<p>b. 当外部类的局部变量和内部类中的实例变量或局部变量发生同名的时候,无法在内部类中访问该外部类的局部变量</p>
-<p>c. 外部类的局部变量对于内部类而言即使一个被隐式<code>final</code>所修饰的常量，不允许改变该常量值。</p>
-<p>​    原因：外部类的局部变量在内存中的声明周期是随着方法调用而加载，随着方法的出栈而消失；而局部内部类在内存中随着方法的调用而加载，<strong>随着方法的出栈而被认定为垃圾数据</strong>，如果在局部内部类使用外部类的局部变量，就会造成外部类的局部变量已经在内存中消失了，而它的值依然在堆内存中，变量的值是什么取决于变量的数据类型，但此时数据类型已经随着方法的出栈不在了，重新赋值会编译报错，<strong>部分被final修饰的自定义常量其实在内存中就相当于“字面值常量”。</strong></p>
-<p>​    JDK1.8之后，如果某个局部变量在局部内部类中被使用了，自动加final</p>
-<h1 id="五、匿名内部类（anonymous-inner-class）"><a href="#五、匿名内部类（anonymous-inner-class）" class="headerlink" title="五、匿名内部类（anonymous inner class）"></a>五、匿名内部类（anonymous inner class）</h1><h2 id="1-学习目的-3"><a href="#1-学习目的-3" class="headerlink" title="1. 学习目的"></a>1. 学习目的</h2><p>a. 用来和接口、多态综合使用，简化接口的使用步骤</p>
-<p>b. 学习匿名内部类是学习Lambda表达式的前提条件</p>
-<h2 id="2-格式-2"><a href="#2-格式-2" class="headerlink" title="2. 格式"></a>2. 格式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">接口名 接口实现类对象名 = <span class="keyword">new</span> 接口名()&#123;&#125;;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="3-注意事项"><a href="#3-注意事项" class="headerlink" title="3. 注意事项"></a>3. 注意事项</h2><p><strong>a.</strong>  匿名的是接口的实现类</p>
-<p><strong>b.</strong> <strong>匿名内部类不能有构造器</strong>（解释：由于构造器的名字必须与类名相同，而匿名内部类没有类名，所以匿名内部类不能有构造器）</p>
-<p><strong>c.</strong> 尽管匿名内部类不能有构造器，但可以提供一个对象初始化块</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=537496&auto=1&height=66"></iframe>
  
 
     </div>
@@ -340,7 +306,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/09/14/%E6%B5%85%E8%B0%88Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/09/14/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -354,18 +320,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/09/14/%E8%81%8A%E8%81%8A%E6%9E%9A%E4%B8%BE%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          聊聊Java中的枚举类
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/09/23/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">动态代理</div>
+    <a href="/2021/09/14/%E8%81%8A%E8%81%8A%E6%9E%9A%E4%B8%BE%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">聊聊Java中的枚举类</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -392,7 +349,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81-%E5%86%85%E9%83%A8%E7%B1%BB%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">一、 内部类概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%88inner-class%EF%BC%89%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">1. 内部类（inner class）的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%86%85%E9%83%A8%E7%B1%BB%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text">2. 内部类分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81-%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%88%E5%AE%9E%E4%BE%8B%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">二、 实例成员内部类（实例内部类）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E7%9A%84"><span class="toc-number">2.1.</span> <span class="toc-text">1. 学习目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">2. 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9E%E4%BE%8B%E5%86%85%E9%83%A8%E7%B1%BB%E6%9D%83%E9%99%90%E8%AE%BF%E9%97%AE%E7%BA%A7%E5%88%AB"><span class="toc-number">2.3.</span> <span class="toc-text">3. 实例内部类权限访问级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%9B%E5%BB%BA%E5%AE%9E%E4%BE%8B%E5%86%85%E9%83%A8%E7%B1%BB%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">2.4.</span> <span class="toc-text">4. 创建实例内部类对象的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.5.</span> <span class="toc-text">5. 注意事项</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB-%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">三、静态成员内部类(静态内部类)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E7%9A%84-1"><span class="toc-number">3.1.</span> <span class="toc-text">1. 学习目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">3.2.</span> <span class="toc-text">2. 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%E7%9A%84%E6%9D%83%E9%99%90%E8%AE%BF%E9%97%AE%E7%BA%A7%E5%88%AB"><span class="toc-number">3.3.</span> <span class="toc-text">3. 静态内部类的权限访问级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">3.4.</span> <span class="toc-text">4. 注意事项</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81-%E6%A0%87%E5%87%86%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%88%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">四、 标准局部内部类（局部内部类）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E7%9A%84-2"><span class="toc-number">4.1.</span> <span class="toc-text">1. 学习目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A0%87%E5%87%86%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB%E6%9D%83%E9%99%90%E8%AE%BF%E9%97%AE%E7%BA%A7%E5%88%AB"><span class="toc-number">4.2.</span> <span class="toc-text">2. 标准局部内部类权限访问级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.3.</span> <span class="toc-text">3. 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="toc-number">4.4.</span> <span class="toc-text">4. 注意事项</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB%EF%BC%88anonymous-inner-class%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">五、匿名内部类（anonymous inner class）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AD%A6%E4%B9%A0%E7%9B%AE%E7%9A%84-3"><span class="toc-number">5.1.</span> <span class="toc-text">1. 学习目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%A0%BC%E5%BC%8F-2"><span class="toc-number">5.2.</span> <span class="toc-text">2. 格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">5.3.</span> <span class="toc-text">3. 注意事项</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E9%98%B6%E6%AE%B5"><span class="toc-number">1.</span> <span class="toc-text">加载阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%EF%BC%9A%E9%AA%8C%E8%AF%81%E9%98%B6%E6%AE%B5"><span class="toc-number">2.</span> <span class="toc-text">连接：验证阶段</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E9%AA%8C%E8%AF%81"><span class="toc-number">2.1.</span> <span class="toc-text">文件格式验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E6%95%B0%E6%8D%AE%E3%80%81%E5%AD%97%E8%8A%82%E7%A0%81%E9%AA%8C%E8%AF%81"><span class="toc-number">2.2.</span> <span class="toc-text">元数据、字节码验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E5%BC%95%E7%94%A8%E9%98%B6%E6%AE%B5"><span class="toc-number">2.3.</span> <span class="toc-text">符号引用阶段</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%EF%BC%9A%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="toc-number">3.</span> <span class="toc-text">连接：准备阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%EF%BC%9A-%E8%A7%A3%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">连接： 解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="toc-number">5.</span> <span class="toc-text">初始化阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E9%A1%BE"><span class="toc-number">6.</span> <span class="toc-text">回顾</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -409,8 +366,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://example.com/2021/09/14/%E6%B5%85%E8%B0%88Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/", 
-    sourceId: "浅谈Java中的内部类",
+    url: "http://example.com/2021/09/14/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/", 
+    sourceId: "Java类加载机制",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
