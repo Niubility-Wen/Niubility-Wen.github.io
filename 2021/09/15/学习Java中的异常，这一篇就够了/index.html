@@ -11,20 +11,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>数据库 | Niubility-Wen</title>
+  <title>Niubility-Wen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="博文的blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="数据库">
-<meta property="og:url" content="http://example.com/%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+  <meta name="description" content="学习Java中的异常，这一篇就够了​    所谓异常指程序发生不正常的情况，从而让JVM非法终止。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Niubility-Wen">
+<meta property="og:url" content="http://example.com/2021/09/15/%E5%AD%A6%E4%B9%A0Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%EF%BC%8C%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/index.html">
 <meta property="og:site_name" content="Niubility-Wen">
-<meta property="og:description" content="博文的blog">
+<meta property="og:description" content="学习Java中的异常，这一篇就够了​    所谓异常指程序发生不正常的情况，从而让JVM非法终止。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-09-23T00:03:25.000Z">
-<meta property="article:modified_time" content="2020-09-23T00:03:25.738Z">
+<meta property="og:image" content="https://z3.ax1x.com/2021/09/15/4VtnK0.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/09/15/4Vt8PJ.png">
+<meta property="article:published_time" content="2021-09-15T04:58:44.982Z">
+<meta property="article:modified_time" content="2021-09-15T05:01:36.621Z">
 <meta property="article:author" content="Niubility-Wen">
 <meta property="article:tag" content="Niubility-Wen 前端博客，后端博客，java,sql,html5,springboot,springcloud">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/09/15/4VtnK0.png">
   
     <link rel="alternative" href="/atom.xml" title="Niubility-Wen" type="application/atom+xml">
   
@@ -182,29 +185,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-学习Java中的异常，这一篇就够了" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      数据库
-    </h1>
-  
-
-        
-        <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93/index.html" class="archive-article-date">
-  	<time datetime="2020-09-23T00:03:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-23</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
 	  
 
  
- 
+ <h1 id="学习Java中的异常，这一篇就够了"><a href="#学习Java中的异常，这一篇就够了" class="headerlink" title="学习Java中的异常，这一篇就够了"></a>学习Java中的异常，这一篇就够了</h1><p>​    所谓异常指程序发生不正常的情况，从而让JVM非法终止。<a id="more"></a></p>
+<p>​    异常处理的任务就是将控制权从产生错误的地方转移到能够处理这种情况的<strong>异常处理器</strong>。</p>
+<blockquote>
+<p>​    在Java中，如果某个方法不能够采用正常的途径完成它的任务，可以通过另外一个路径退出方法。</p>
+<p>​    在这种情况下，方法并不会返回任何值，而是<font color="red"><strong>抛出（throw）</strong></font>一个封装了错误信息的对象。</p>
+<p>​    需要注意的是，<font color="red"><strong>这个方法将会立刻退出，并不返回正常值（或任何值）</strong></font>。</p>
+<p>​    此外，也不会调用这个方法的代码继续执行，取而代之的是，<strong>异常处理机制</strong>开始搜索能够处理这种异常状况的<font color="red"><strong>异常处理器（exception handler）</strong></font></p>
+</blockquote>
+<h1 id="Throwable"><a href="#Throwable" class="headerlink" title="Throwable"></a>Throwable</h1><h2 id="1-Throwable类的特点"><a href="#1-Throwable类的特点" class="headerlink" title="1. Throwable类的特点"></a>1. Throwable类的特点</h2><p>​    **<code>Throwable</code>**类 是Java语言中所有错误或异常类的父类.（异常对象都是派生于<code>Throwable</code>类的一个类实例）</p>
+<blockquote>
+<p>需要注意的是，<font color="red"><strong>所有的异常都是由Throwable继承而来的</strong></font>，但在下一层立即分解为两个分支：<strong>Error</strong>和<strong>Exception</strong>。</p>
+</blockquote>
+<p>​    <font color="red"><strong>错误（Error）</strong></font>：<code>Error</code>类层次结构描述了<strong>Java运行时系统的内部错误和资源耗尽错误</strong>，这些都是程序中出现重大的问题，并且无法进行修复。</p>
+<p>​        例如：堆栈内存溢出</p>
+<p>​    <font color="red"><strong>异常（Exception）</strong></font>：指程序中出现不填严重的问题，可以进行后期修复，从而保证程序后续的正常运行。</p>
+<h2 id="2-Throwable类的构造器及其常用方法"><a href="#2-Throwable类的构造器及其常用方法" class="headerlink" title="2. Throwable类的构造器及其常用方法"></a>2. Throwable类的构造器及其常用方法</h2><p>​    </p>
+<p>**<code>public Throwable()</code>**：构造一个新的Throwable对象，但没有详细的描述信息。</p>
+<p>**<code>public Throwable(String message)</code>**：构造一个新的Throwable对象，带有指定的详细描述信息。按惯例，所有派生的异常类都支持一个默认的构造器和一个带有详细描述信息的构造器。</p>
+<p><strong><code>public void printStackTrace()</code>**：用该方法异常堆栈的文本描述信息。（拓展：Java后台打印异常堆栈堆栈追踪信息的时候，采用了</strong>异步线程**的方式打印的）</p>
+<p>**<code>public String getMessage()</code>**：获得Throwable对象的详细描述信息。</p>
+<h1 id="Exception"><a href="#Exception" class="headerlink" title="Exception"></a>Exception</h1><p>特点：Java程序中的异常必须进行处理</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4VtnK0"><img src="https://z3.ax1x.com/2021/09/15/4VtnK0.png" alt="4VtnK0.png"></a></p>
+<ul>
+<li><p>编译时异常（又叫受检异常、CheckedException、受控异常）</p>
+<ul>
+<li><strong><font color="red">代码没有任何语法格式错误</font>，但代码会编译报错。</strong></li>
+</ul>
+</li>
+<li><p>运行时异常（又叫未受检异常、UnCheckedException、非受控异常）</p>
+<ul>
+<li><strong><font color="red">代码没有任何语法格式错误</font>，但代码会在运行时发生非正常的情况，导致JVM终止。</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h2><ul>
+<li>编译时异常<ul>
+<li><strong><code>java.lang.Exception</code>类及其子类（<code>RuntimeException</code>类及其子类除外）</strong></li>
+</ul>
+</li>
+<li>运行时异常<ul>
+<li><strong><code>java.lang.RuntimeException</code>类及其子类</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="处理方案"><a href="#处理方案" class="headerlink" title="处理方案"></a>处理方案</h2><ul>
+<li>编译时异常：<ul>
+<li>必须程序员手动进行解决</li>
+</ul>
+</li>
+<li>运行时异常：<ul>
+<li>可以手动进行解决</li>
+<li>无需手动解决，JVM自动帮其进行解决<ul>
+<li>JVM处理方案步骤：<ol>
+<li>发现异常后，先将异常交给程序自身（程序员手动解决）进行解决</li>
+<li>程序接收到异常后，发现没有手动解决方案，将异常信息再交还给JVM</li>
+<li>JVM再次接收到异常信息后，直接终止JVM</li>
+<li>终止JVM的同时，调用<code>Throwable</code>类中的<code>printStackTrace()</code>方法将异常信息打印到控制台。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<center>发生运行时异常时JVM的处理方案步骤</center>
+
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/4Vt8PJ"><img src="https://z3.ax1x.com/2021/09/15/4Vt8PJ.png" alt="4Vt8PJ.png"></a></p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li><p>编译时异常和运行时异常，都是发生在运行阶段的。**<font color="red">编译阶段异常是不会发生的</font>**。</p>
+</li>
+<li><p>编译时异常是因为什么而得名？</p>
+<p>因为编译时异常必须在编译（编写）阶段预先处理，如果不处理，编译器会报错，因此得名。</p>
+</li>
+<li><p>所有异常都是运行阶段发生的。因为只有程序运行阶段才可以new对象，因为异常的发生就是new 异常对象。</p>
+</li>
+</ol>
+<h1 id="异常的处理"><a href="#异常的处理" class="headerlink" title="异常的处理"></a>异常的处理</h1><p>​    五个关键字：<font color="red">**<code>thorw</code>、<code>throws</code>、<code>try</code>、<code>catch</code>、<code>finally</code>**</font></p>
+<h2 id="1-异常的声明"><a href="#1-异常的声明" class="headerlink" title="1. 异常的声明"></a>1. 异常的声明</h2><h3 id="throw关键字"><a href="#throw关键字" class="headerlink" title="throw关键字"></a>throw关键字</h3><h4 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h4><p>抛出异常对象信息</p>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">throw</span> <span class="keyword">new</span> 异常类名(实参);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="异常处理方案"><a href="#异常处理方案" class="headerlink" title="异常处理方案"></a>异常处理方案</h4><ol>
+<li>异常声明（throws）</li>
+<li>异常捕获（try…catch…finally）</li>
+</ol>
+<h3 id="throws关键字"><a href="#throws关键字" class="headerlink" title="throws关键字"></a>throws关键字</h3><blockquote>
+<p>​    throws表示异常声明</p>
+</blockquote>
+<h4 id="含义-1"><a href="#含义-1" class="headerlink" title="含义"></a>含义</h4><p>​    在方法声明格式上进行异常的声明，告知调用者进行使用的时候进行异常的处理。</p>
+<h4 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修饰符 返回值类型 方法名(形参列表) <span class="keyword">throws</span> 异常类名<span class="number">1</span>,异常类名<span class="number">2</span>,...,异常类名n&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="异常声明的注意事项：继承"><a href="#异常声明的注意事项：继承" class="headerlink" title="异常声明的注意事项：继承"></a>异常声明的注意事项：继承</h4><ol>
+<li><p>抛出的异常对象对应的类存在子父类继承关系</p>
+<ol>
+<li>异常声明存在子父类继承关系的异常类时，异常子类和异常父类以后顺序无所谓</li>
+<li>异常声明存在子父类继承关系的异常类时，直接声明异常父类即可</li>
+</ol>
+</li>
+<li><p>抛出的异常对象所在的类存在子父类继承关系</p>
+<ol>
+<li>抛出异常的代码存在父类被重写的方法中<ol>
+<li>子类重写的方法，<strong>无需理会</strong>父类被重写方法的异常</li>
+</ol>
+</li>
+<li>抛出异常的代码存在子类重写后的方法中<ol>
+<li>不能进行异常的声明，只有唯一的处理方法：<strong>异常的捕获</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>thorws需要写在方法声明的后面，thorows后面需要声明方法中发生异常的类型，通常将这种做法统称为<strong>方法声明抛出一个异常</strong>。</li>
+<li><font color ="red"><strong>如果在子类中覆盖了父类的一个方法，子类方法中声明的检查型异常就不能比超类方法中声明的异常更通用（即子类重写抛出的异常，只能是父类被重写方法抛出的异常类型或者是其子类，也可以选择不抛出异常）</strong></font>。</li>
+<li>如果父类方法没有抛出任何检查型异常，子类也不能抛出任何检查型异常（但子类可以抛出运行时异常，但这样做是没有意义的）。</li>
+</ol>
+<h2 id="2-异常的捕获"><a href="#2-异常的捕获" class="headerlink" title="2. 异常的捕获"></a>2. 异常的捕获</h2><h4 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	可能发生异常的代码	</span><br><span class="line">&#125; <span class="keyword">catch</span>(异常类名 对象名) &#123;</span><br><span class="line">	该异常对象的解决方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h4><ol>
+<li><p>先执行try{ }中的代码，看是否存在异常信息</p>
+</li>
+<li><p>如果没有异常信息，执行完毕后，执行后续代码</p>
+<p>如果有异常信息，则执行捕获代码块中对异常对象的解决方法</p>
+</li>
+</ol>
+<h4 id="异常的捕获注意的事项：继承"><a href="#异常的捕获注意的事项：继承" class="headerlink" title="异常的捕获注意的事项：继承"></a>异常的捕获注意的事项：继承</h4><ol>
+<li><p>抛出的异常对象对应的类存在子父类继承关系</p>
+<ol>
+<li><p>存在子父类继承关系的异常类时，可以分别捕获，分别处理</p>
+</li>
+<li><p>存在子父类继承关系的异常类时，可以一次捕获，分别处理</p>
+<p>注意事项：分别处理时，异常处理的信息需要将之类写在最上面</p>
+</li>
+<li><p>存在子父类继承关系的异常类时，可以一次捕获，一次处理</p>
+</li>
+</ol>
+</li>
+<li><p>抛出的异常对象所在的类存在子父类继承关系</p>
+<ol>
+<li>抛出异常的代码存在父类被重写的方法中<ol>
+<li>子类重写的方法，<strong>无需理会</strong>父类被重写方法的异常</li>
+</ol>
+</li>
+<li>抛出异常的代码存在子类重写后的方法中<ol>
+<li>不能进行异常的声明，只有唯一的处理方法：<strong>异常的捕获</strong></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>catch后面的小括号中的类型可以是具体的异常类型，也可以是该异常类型的父类型。</li>
+<li>catch可以写多个。建议写catch的时候，精确到一个一个处理，这样有利于程序的调试。</li>
+<li>catch有多个的时候，从上到下，异常类型遵守从小到大</li>
+</ol>
+<h3 id="finally关键字"><a href="#finally关键字" class="headerlink" title="finally关键字"></a>finally关键字</h3><h4 id="格式-3"><a href="#格式-3" class="headerlink" title="格式"></a>格式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	可能发生异常的代码	</span><br><span class="line">&#125; <span class="keyword">catch</span>(异常类名 对象名) &#123;</span><br><span class="line">	该异常对象的解决方法</span><br><span class="line">&#125; <span class="keyword">finally</span>&#123;</span><br><span class="line">    必须执行的代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="执行流程-1"><a href="#执行流程-1" class="headerlink" title="执行流程"></a>执行流程</h4><p>和try代码块一起联合使用，finally语句块中的代码必须执行。</p>
+<h4 id="finally关键字注意事项"><a href="#finally关键字注意事项" class="headerlink" title="finally关键字注意事项"></a>finally关键字注意事项</h4><blockquote>
+<p><font color="red"><strong>在try，catch，finally代码块中尽量避免return的出现。</strong></font></p>
+<p><strong>因为如果finally块中也有一个return语句，这个返回值将会屏蔽原来的返回值。</strong></p>
+<p>finally代码块主要用于清理资源。<font color="red"><strong>不要把改变控制流的语句（return、throw、break、continue）放在finally代码块中。</strong></font></p>
+</blockquote>
+<blockquote>
+<p>需要注意的是，finally中的代码块在一种情况下是不会执行的，那就是在try…catch中执行了<font color="red">**<code>System.exit(0);</code>**</font> 语句。</p>
+<p><font color="red"><strong><code>System.exit(0);</code> 语句表示退出当前Java的虚拟机</strong></font>，Java虚拟机停止了，任何代码都不能再执行了。</p>
+</blockquote>
+<h1 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h1><p>自定义异常分为自定义编译时异常和自定义运行时异常</p>
+<h2 id="1-自定义编译时异常类"><a href="#1-自定义编译时异常类" class="headerlink" title="1. 自定义编译时异常类"></a>1. 自定义编译时异常类</h2><p>自定义编译时异常类的步骤</p>
+<ol>
+<li><p>继承<font color="red">**<code>Exception</code>**</font>类</p>
+</li>
+<li><p>根据<font color="red">**<code>Exception</code>**</font>类至少生成两个构造器</p>
+<ul>
+<li>无参构造器</li>
+<li>含有String参数的构造器</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-自定义运行时异常类"><a href="#2-自定义运行时异常类" class="headerlink" title="2. 自定义运行时异常类"></a>2. 自定义运行时异常类</h2><p>自定义运行时异常类的步骤</p>
+<ol>
+<li><p>自定义运行时异常类，并继承<font color="red">**<code>RuntimeException</code>**</font>类</p>
+</li>
+<li><p>根据<font color="red">**<code>RuntimeException</code>**</font>类至少生成两个构造器</p>
+<ul>
+<li><p>无参构造器</p>
+</li>
+<li><p>含有String参数的构造器</p>
+</li>
+</ul>
+</li>
+</ol>
+
  
 
     </div>
@@ -261,7 +442,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/%E6%95%B0%E6%8D%AE%E5%BA%93/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/09/15/%E5%AD%A6%E4%B9%A0Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%EF%BC%8C%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -273,6 +454,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/14/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JVM类加载机制</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -294,7 +485,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%EF%BC%8C%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86"><span class="toc-number">1.</span> <span class="toc-text">学习Java中的异常，这一篇就够了</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Throwable"><span class="toc-number">2.</span> <span class="toc-text">Throwable</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Throwable%E7%B1%BB%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">1. Throwable类的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Throwable%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%99%A8%E5%8F%8A%E5%85%B6%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">2. Throwable类的构造器及其常用方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Exception"><span class="toc-number">3.</span> <span class="toc-text">Exception</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88"><span class="toc-number">3.3.</span> <span class="toc-text">处理方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-number">3.4.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">异常的处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A3%B0%E6%98%8E"><span class="toc-number">4.1.</span> <span class="toc-text">1. 异常的声明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#throw%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">4.1.1.</span> <span class="toc-text">throw关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AB%E4%B9%89"><span class="toc-number">4.1.1.1.</span> <span class="toc-text">含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.1.1.2.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88"><span class="toc-number">4.1.1.3.</span> <span class="toc-text">异常处理方案</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#throws%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">4.1.2.</span> <span class="toc-text">throws关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AB%E4%B9%89-1"><span class="toc-number">4.1.2.1.</span> <span class="toc-text">含义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">4.1.2.2.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E5%A3%B0%E6%98%8E%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%9A%E7%BB%A7%E6%89%BF"><span class="toc-number">4.1.2.3.</span> <span class="toc-text">异常声明的注意事项：继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.1.2.4.</span> <span class="toc-text">总结</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BC%82%E5%B8%B8%E7%9A%84%E6%8D%95%E8%8E%B7"><span class="toc-number">4.2.</span> <span class="toc-text">2. 异常的捕获</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-2"><span class="toc-number">4.2.0.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">4.2.0.2.</span> <span class="toc-text">执行流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E6%8D%95%E8%8E%B7%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BA%8B%E9%A1%B9%EF%BC%9A%E7%BB%A7%E6%89%BF"><span class="toc-number">4.2.0.3.</span> <span class="toc-text">异常的捕获注意的事项：继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93-1"><span class="toc-number">4.2.0.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#finally%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">4.2.1.</span> <span class="toc-text">finally关键字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%BC%E5%BC%8F-3"><span class="toc-number">4.2.1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B-1"><span class="toc-number">4.2.1.2.</span> <span class="toc-text">执行流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#finally%E5%85%B3%E9%94%AE%E5%AD%97%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">4.2.1.3.</span> <span class="toc-text">finally关键字注意事项</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8"><span class="toc-number">5.</span> <span class="toc-text">自定义异常</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BC%96%E8%AF%91%E6%97%B6%E5%BC%82%E5%B8%B8%E7%B1%BB"><span class="toc-number">5.1.</span> <span class="toc-text">1. 自定义编译时异常类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BC%82%E5%B8%B8%E7%B1%BB"><span class="toc-number">5.2.</span> <span class="toc-text">2. 自定义运行时异常类</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -311,8 +502,8 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://example.com/%E6%95%B0%E6%8D%AE%E5%BA%93/index.html", 
-    sourceId: "",
+    url: "http://example.com/2021/09/15/%E5%AD%A6%E4%B9%A0Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%EF%BC%8C%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/", 
+    sourceId: "学习Java中的异常，这一篇就够了",
     productKey: "true",
     target: "cloud-tie-wrapper"
   };
@@ -353,7 +544,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
