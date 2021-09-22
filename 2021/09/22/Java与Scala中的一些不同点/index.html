@@ -13,13 +13,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Niubility-Wen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="博文的blog">
-<meta property="og:type" content="website">
+  <meta name="description" content="Scala与Java的一些区别最近刚把scala简单过一遍，这里简单总结一些Scala与Java的一些不一样的地方">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Niubility-Wen">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:url" content="http://example.com/2021/09/22/Java%E4%B8%8EScala%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%90%8C%E7%82%B9/index.html">
 <meta property="og:site_name" content="Niubility-Wen">
-<meta property="og:description" content="博文的blog">
+<meta property="og:description" content="Scala与Java的一些区别最近刚把scala简单过一遍，这里简单总结一些Scala与Java的一些不一样的地方">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-22T12:45:50.133Z">
+<meta property="article:modified_time" content="2021-09-22T12:44:57.148Z">
 <meta property="article:author" content="Niubility-Wen">
 <meta property="article:tag" content="Niubility-Wen 前端博客，后端博客，java,sql,html5,springboot,springcloud">
 <meta name="twitter:card" content="summary">
@@ -180,71 +182,306 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-数据库系统概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Java与Scala中的一些不同点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">数据库系统概述</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="archive-article-date">
-  	<time datetime="2020-09-17T18:22:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
 	  
 
-  <h2 id="第一章：绪论"><a href="#第一章：绪论" class="headerlink" title="第一章：绪论"></a>第一章：绪论</h2><h3 id="1-1-数据库系统概述"><a href="#1-1-数据库系统概述" class="headerlink" title="1.1 数据库系统概述"></a>1.1 数据库系统概述</h3>
+ 
+ <h1 id="Scala与Java的一些区别"><a href="#Scala与Java的一些区别" class="headerlink" title="Scala与Java的一些区别"></a>Scala与Java的一些区别</h1><p>最近刚把scala简单过一遍，这里简单总结一些Scala与Java的一些不一样的地方</p>
+<a id="more"></a>
+
+
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scala</th>
+<th>Java</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>object关键字</td>
+<td>有</td>
+<td>无</td>
+</tr>
+<tr>
+<td>static关键字</td>
+<td>scala中没有static关键字。<br>object中所有的属性和方法都是类似java static修饰的.</td>
+<td>有</td>
+</tr>
+<tr>
+<td>main方法</td>
+<td>class中所有的属性和方法都是类似java 非static修饰的。<br>所以scala main方法必须定义在object中。</td>
+<td>可以在任意类中</td>
+</tr>
+<tr>
+<td>public关键字</td>
+<td>scala没有public关键字，默认就是类似Java中的public</td>
+<td>有</td>
+</tr>
+<tr>
+<td>分号  “ ；”</td>
+<td>scala一行如果只写一个语句，那么;可以省略。<br>如果一行写多个语句，那么;不能省略。</td>
+<td>必须有;   不能省略</td>
+</tr>
+<tr>
+<td>注释</td>
+<td>scala中注释与java完全一样。</td>
+<td>单行注释://<br>多行注释: /* .. */<br>文档注释: /** .. */</td>
+</tr>
+<tr>
+<td>标识符</td>
+<td>只能是字母、数字、下划线、特殊符号，首字母不能是数字。<br>特殊符号不推荐程序员使用,是scala内部使用的。<br>scala推荐使用驼峰原则</td>
+<td>只能是字母、数字、下划线,首字母不能是数字。<br/>java中定义变量的时候一般使用驼峰命名原则。</td>
+</tr>
+<tr>
+<td>定义变量</td>
+<td>语法：<code>val/var 变量名:类型 = 值</code><br>val与var的区别:<br>1. val定义的变量类似java final的，不能被重新赋值<br>2. var定义的变量可以被重新赋值<br><br/>scala在定义变量的时候,变量类型可以省略,scala会<strong>自动推断</strong>变量类型</td>
+<td>语法：<code>类型 变量名 = 值</code></td>
+</tr>
+<tr>
+<td>获取字符串</td>
+<td>1、通过new的方式:new String(“…”) <br>2、通过 <code>&quot;&quot;</code> 包裹:  “…” <br>3、通过连接符<code>+</code>:  “aa”+”cc” <br>4、通过插值表达式: <code>s&quot;aa $&#123;外部变量/表达式&#125;&quot; </code><br>5、通过三引号的方式: <code>&quot;&quot;&quot;...&quot;&quot;&quot; </code>[后续主要用来写sql语句] <br>6、通过一些方法获取:<code> toString</code>、<code>subString</code>….</td>
+<td>1、通过new的方式:<code>new String(&quot;...&quot;)</code><br>2、通过 <code>&quot;&quot;</code> 包裹:  “…” <br>3、通过连接符<code>+</code>:  “aa”+”cc” <br>4、通过一些方法获取: <code>toString</code>、<code>subString</code>….<br>5、String类型的静态方法<code>valueOf</code>(基本数据类型)  （推荐）<br>6、包装类型的静态<code>toString</code>(基本数据类型)方法</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td><code>Any</code>: <strong>所有类的父类,类似java Object</strong><br><code>AnyRef</code>: <strong>引用类型</strong><br/>     String、集合、数组、java class、scala class <br>        Null: 是所有引用类型的子类, 也有一个实例null,null一般用于给变量赋予初始值,在给变量赋初始值的时候,变量类型不能省略<br/><code>AnyVal</code>: <strong>值类型</strong> <br/>    Byte、Short、Int、Char、Long、Float、Double、Boolean<br>    Stringops: 就是对java String的扩展<br>    Unit: 相当于java的void，有一个实例()<br><code>Nothing</code>: <strong>所有类型的子类</strong>。是scala内部使用,开发人员不能创建Nothing对象</td>
+<td>1、基本数据类型: byte、short、int、char、long、float、double、boolean<br>2、引用数据类型: String、集合、数组、class、包装类等</td>
+</tr>
+<tr>
+<td>运算符</td>
+<td>算术运算符: +  -  *  /  % <br/>关系运算符: &gt;  &lt;  &gt;=  &lt;=  !=  == <br/>逻辑运算符: &amp;&amp;  ||  !<br/>赋值运算符: +=  -=  *=  /=  = <br/>位运算符: &lt;&lt;  &gt;&gt;  &lt;&lt;&lt;  &amp;  | <br/><strong>scala中没有++、 – 、三元运算符</strong><br><br>在scala中运算符其实是一个个的方法，scala中方法的调用的方式：<br>     1、<code>对象.方法名(参数值,...)</code><br>     2、<code>对象 方法名 (参数值,..)</code>  如果方法的参数只有一个,()可以省略</td>
+<td>算术运算符: +  -  *  /  %  ++  – <br/>关系运算符: &gt;  &lt;  &gt;=  &lt;=  !=  ==<br/>逻辑运算符: &amp;&amp;  ||  ! <br/>赋值运算符: +=  -=  *=  /=  = <br/>位运算符: &lt;&lt;  &gt;&gt;  &lt;&lt;&lt;  &amp;  | .. <br/>三元运算符: 布尔表达式? 表达式1: 表达式2</td>
+</tr>
+<tr>
+<td>break</td>
+<td>scala中没有break<br>scala实现break:<br>   1、导入包:<code> import scala.util.control.Breaks._</code><br>   2、使用<code>breakable</code> 与 <code>break</code> 方法实现</td>
+<td>结束当前循环</td>
+</tr>
+<tr>
+<td>continue</td>
+<td>scala中没有continue</td>
+<td>结束本次循环，开始下一次循环</td>
+</tr>
+<tr>
+<td>switch</td>
+<td>scala中没有switch流程控制</td>
+<td>Java中有switch流程控制</td>
+</tr>
+<tr>
+<td>if</td>
+<td>scala中if分支有返回值的,返回值是满足条件的分支的{}中最后一个表达式的结果值</td>
+<td>Java中if没有返回值</td>
+</tr>
+<tr>
+<td>while与do-while</td>
+<td>scala while循环与do-while循环用法与java完全一样</td>
+<td>while与do-while的区别:<br>   while是先判断后执行<br>   do-while是先执行后判断</td>
+</tr>
+<tr>
+<td>方法语法</td>
+<td><code>def 方法名( 参数名:类型 ,...): 返回值类型 = &#123;方法体&#125;</code><br><strong>scala方法可以定义在任何地方</strong>。</td>
+<td><code>[修饰符] 方法返回值类型 方法名(形参列表) &#123;方法体&#125;</code></td>
+</tr>
+<tr>
+<td>方法的简化原则</td>
+<td>1、如果将方法体块表达式的结果值作为方法的返回值,定义方法的时候返回值类型可以省略<br>      1、如果方法体中有return关键字,定义方法的时候返回值类型必须定义<br/>      2、方法返回值类型为<code>Unit</code>，则忽略return语句的返回值类型 <br>2、如果方法体只有一行语句,{ }可以省略<br/>3、如果方法不需要参数,()可以省略<br/>     1、如果定义方法的时候有(),在调用方法的时候()可有可无<br/>     2、如果定义方法的时候没有(),调用方法的时候()也不能带上<br/>4、如果方法不需要返回值,那么=可以省略,=与{}不能同时省略</td>
+<td>必须严格按照语法格式来定义</td>
+</tr>
+<tr>
+<td>函数语法</td>
+<td><code>val 函数名 = (参数名:参数类型,...) =&gt; &#123; 函数体 &#125;</code><br>     函数的返回值就是函数体块表达式的结果值<br><br>函数的简化: 如果函数体只有一行语句,{ }可以省略<br><br>函数也是对象</td>
+<td>方法就是函数</td>
+</tr>
+<tr>
+<td>函数与方法的区别</td>
+<td>1、存储位置不同:<br>         函数是对象存储在堆里面<br>         方法放在方法区中<br> 2、方法如果定义在class/object可以重载,但是函数不可以<br>         方法定义在方法里面其实就是函数,不可以重载<br>3、方法可以转换成函数: 方法名 _</td>
+<td>没有区别</td>
+</tr>
+<tr>
+<td>高阶函数</td>
+<td>以函数作为方法的参数或者是返回值的方法/函数称之为高阶函数</td>
+<td>形式上类似于Java中的lambda表达式</td>
+</tr>
+<tr>
+<td>高阶函数的简化</td>
+<td>1、直接将函数本身作为值传递<br> 2、函数的参数类型可以省略<br> 3、如果函数的参数在函数体中只使用了一次,那么可以用_代替<br>       1、如果函数体中参数的使用顺序与参数的定义顺序不一致,不能用_代替<br>       2、如果函数参数只有一个,并且在函数体中没有做任何操作,直接返回函数参数本身的时候,不能用_代替 <br>      3、如果函数体中有嵌套,函数的参数在嵌套中以表达式的形式存在,此时不能用_代替 4、如果函数的参数只有一个,函数参数列表的()可以省略</td>
+<td>lambda的简化方式</td>
+</tr>
+<tr>
+<td>创建类</td>
+<td><code>class 类名&#123;....&#125;</code><br>scala中修饰符默认类似java public,scala没有public关键字<br>class的{}中如果没有任何东西，定义class的时候{}可以省略<br>通过new创建对象的时候,如果使用默认的无参构造方法创建对象,此时()可以省略</td>
+<td><code>[修饰符] class 类名&#123;...&#125;</code></td>
+</tr>
+<tr>
+<td>定义属性</td>
+<td><code>[修饰符] val/var 属性名:属性类型 = 值</code><br>      scala val修饰的属性不可变,var修饰的属性可变<br>      scala private修饰的属性只能在class内部使用，非private修饰的属性在class外部以及class内部都可以使用<br>      scala中var修饰的变量可以通过<code>_</code>赋予初始值,通过<code>_</code>赋予初始值的时候，属性类型必须定义</td>
+<td><code>[修饰符] 类型 属性名 = 值;</code></td>
+</tr>
+<tr>
+<td>构造方法</td>
+<td>scala的构造方法分为两种:<br>    1、<strong>主构造器</strong>:<br>       1、语法: <code>修饰符 class 类名([修饰符 val/var] 属性名:类型 [= 默认值],...)</code><br>       主构造器中使用val/var修饰的属性与不用val/var修饰的属性的区别:<br>           使用val/var修饰的属性默认可以在class外部使用【非private修饰的】<br>           不用val/var修饰的属性只能在class内部使用<br>           主构造器中不能通过_给var修饰的属性赋予初始值<br>       2、定义位置: 类名后面的()代表主构造器<br>    2、<strong>辅助构造器</strong><br>       1、语法:<br>            def this(参数名:参数类型,…) = {<br>               //辅助构造器第一行必须调用其他的辅助构造器或者是主构造器<br>               this(值,..)<br>            }<br>      2、定义位置: 定义在class内部</td>
+<td>1、语法: <code>[修饰符] 类名(参数类型 参数名,..)&#123;...&#125; </code><br>2、java的构造方法定义在class内部</td>
+</tr>
+<tr>
+<td>set/get 方法</td>
+<td>scala默认的get方法名：  <code>属性名</code><br> scala默认的set方法名： <code>属性名 = 要赋予的值</code></td>
+<td>自己手动创建</td>
+</tr>
+<tr>
+<td>继承</td>
+<td>scala中通过extends关键字实现继承<br>    哪些不能被继承?<br>        1、final修饰的class不能被继承<br>        2、private修饰的属性和方法不能被继承<br>scala可以通过override重写父类的val的属性和方法<br><br>子类可以通过super调用父类的方法</td>
+<td></td>
+</tr>
+<tr>
+<td>包的用法</td>
+<td>1、导入包:<br>     scala导入包的时候可以在任何地方导入。<br>     scala导入包之后只能在当前作用域和子作用域使用<br>     1、导入包下所有类: <code>import 包名._</code><br>     2、导入包下某个类: <code>import 包名.类名</code><br>     3、导入包下多个类: <code>import 包名.&#123;类名,类名,..&#125;</code><br/>     4、导入包下某个类,并起别名: <code>import 包名.&#123;类名=&gt; 别名&#125;</code><br/>     5、导入包下除开某个类的所有类: <code>import 包名.&#123;类名=&gt; _ , _&#125;</code><br/>2、声明包:<br/>    1、与java一样: package com.ybw.demo01<br/>3、创建包   <code> package 包名&#123;...&#125;</code><br/>4、包对象:<br/>      语法: <code>package object 包名&#123;...&#125;</code><br/>      包对象中定义的非private修饰的属性和方法以及函数可以在当前包中任何地方使用<br/>5、将包和访问修饰符结合使用: private[包名] 代表修饰的属性或者方法只能在指定包下使用</td>
+<td>1、导入包: <code>import 包名.类名/import 包名.*</code><br> 【导入包的位置必须在文件开头,在package声明下面】<br> 2、声明包: package com.ybw.demo01</td>
+</tr>
+<tr>
+<td>抽象类</td>
+<td>通过abstract标识的class称之为抽象类</td>
+<td>通过abstract标识的class称之为抽象类</td>
+</tr>
+<tr>
+<td>抽象方法</td>
+<td>没有方法体的方法就是抽象方法<br>定义抽象方法的时候必须定义方法的返回值类型，如果不定义默认就是Unit</td>
+<td>没有方法体的方法就是抽象方法</td>
+</tr>
+<tr>
+<td>具体方法</td>
+<td>有方法体的方法就是具体方法</td>
+<td>有方法体的方法就是具体方法</td>
+</tr>
+<tr>
+<td>抽象属性</td>
+<td>没有初始化的属性<br>抽象属性在定义的时候必须指定类型</td>
+<td>Java中没有抽象属性</td>
+</tr>
+<tr>
+<td>具体属性</td>
+<td>有进行初始化的属性</td>
+<td>实例属性</td>
+</tr>
+<tr>
+<td>类型检查</td>
+<td><code>对象.isInstanceOf[类型]</code></td>
+<td><code>对象 instanceof 类型</code></td>
+</tr>
+<tr>
+<td>强转</td>
+<td><code>对象.asInstanceOf[类型]</code></td>
+<td><code>(类型)对象</code></td>
+</tr>
+<tr>
+<td>获取对象的class形式</td>
+<td><code>对象.getClass</code></td>
+<td><code>对象.getClass()</code></td>
+</tr>
+<tr>
+<td>获取类的class形式</td>
+<td><code>classOf[类名]</code></td>
+<td><code>类名.class</code></td>
+</tr>
+<tr>
+<td>新类型语法</td>
+<td><code>type 别名 = 类型</code></td>
+<td>无</td>
+</tr>
+<tr>
+<td>元组</td>
+<td>创建方式:<br>     1、(初始元素,初始元素,..) <br/>    2、特殊形式[只有二元元组才能使用此种方式创建]:  <code>K -&gt; V</code><br/> 元组中最多只能存储22个元素<br/> 元组一旦创建，元组的长度和元素都不可改变<br/> 元组获取元素的方式: <code>元组名._角标</code> [元组的角标从1开始]</td>
+<td>无此类型</td>
+</tr>
+<tr>
+<td>异常的处理方式</td>
+<td>1、抛出异常:<br/>     与java不太一样，只需要在方法体中通过throw抛出异常即可，不需要在方法上通过throws关键字声明异常 <br/>2、捕获异常&lt;获取资源链接的时候&gt;：<br/>      try{<br/>         … <br/>      }catch{<br/>       case e:异常类型 =&gt; .. <br/>      }finally{<br/>         …<br/>       } <br/>3、Try(代码块).getOrElse(默认值) 如果代码块运行成功则返回代码正常执行结果，如果执行出现异常则返回默认值<br/>     Try有两个子类:<br/>       Success: 代表代码执行成功<br/>       Failture: 代表代码运行出现异常<br/>     Try有isFailture、isSuccess判断是否为Failture、success类型</td>
+<td>1、抛出异常:<br>   1、方法体中: throw new xxException(“…”)<br/>   2、在方法上通过throws关键字声明抛出一样<br>2、捕获异常</td>
+</tr>
+</tbody></table>
+
  
 
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数据库基础知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库//" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/18/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">展开全文 >></a>
-        </p>
       
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/09/22/Java%E4%B8%8EScala%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%90%8C%E7%82%B9/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/18/List%E9%9B%86%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -259,247 +496,43 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/18/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hexo博客搭建</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/18/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2020-09-17T17:17:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	  
-
-  <h1 id="Hexo博客搭建"><a href="#Hexo博客搭建" class="headerlink" title="Hexo博客搭建"></a>Hexo博客搭建</h1>
- 
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Hexo博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Hexo博客//" class="article-tag-list-link color2">Hexo博客</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/18/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Scala%E4%B8%8EJava%E7%9A%84%E4%B8%80%E4%BA%9B%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">Scala与Java的一些区别</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-MarkDown基本语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/15/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">MarkDown基本语法</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/15/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-09-14T17:29:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	  
-
-  <h1 id="MarkDown基本语法学习"><a href="#MarkDown基本语法学习" class="headerlink" title="MarkDown基本语法学习"></a>MarkDown基本语法学习</h1>
- 
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MarkDown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Other//" class="article-tag-list-link color1">Other</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/15/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/14/hello-world/" class="archive-article-date">
-  	<time datetime="2020-09-14T00:27:12.135Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-	  
-
-  <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
- 
-
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/14/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://example.com/2021/09/22/Java%E4%B8%8EScala%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%90%8C%E7%82%B9/", 
+    sourceId: "Java与Scala中的一些不同点",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+  
+
+  
+
   
 
 
@@ -528,8 +561,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
