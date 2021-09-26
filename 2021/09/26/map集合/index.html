@@ -11,15 +11,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Niubility-Wen</title>
+  <title>Niubility-Wen</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="博文的blog">
-<meta property="og:type" content="website">
+  <meta name="description" content="Map集合简述">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Niubility-Wen">
-<meta property="og:url" content="http://example.com/archives/index.html">
+<meta property="og:url" content="http://example.com/2021/09/26/map%E9%9B%86%E5%90%88/index.html">
 <meta property="og:site_name" content="Niubility-Wen">
-<meta property="og:description" content="博文的blog">
+<meta property="og:description" content="Map集合简述">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-26T08:44:48.066Z">
+<meta property="article:modified_time" content="2021-09-26T07:05:02.454Z">
 <meta property="article:author" content="Niubility-Wen">
 <meta property="article:tag" content="Niubility-Wen 前端博客，后端博客，java,sql,html5,springboot,springcloud">
 <meta name="twitter:card" content="summary">
@@ -180,299 +182,287 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-map集合" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+	  
+
+ 
+ <h1 id="Map集合简述"><a href="#Map集合简述" class="headerlink" title="Map集合简述"></a>Map集合简述</h1><a id="more"></a>
+
+<h2 id="一、Map接口"><a href="#一、Map接口" class="headerlink" title="一、Map接口"></a>一、Map接口</h2><h3 id="1、Map接口的特点"><a href="#1、Map接口的特点" class="headerlink" title="1、Map接口的特点"></a>1、Map接口的特点</h3><ol>
+<li>Map集合是以一对数据进行存储,一个为key(键),一个为value(值)</li>
+<li>在Java中<strong>不允许key重复</strong></li>
+<li>在Java中<strong>允许value重复</strong></li>
+<li>如果存储了相同的键，后存储的值则会覆盖原有的值，简而言之就是<strong>键相同，值覆盖</strong></li>
+<li>Map集合中提供三种单列集合,分别为<strong>键集</strong>（keySet()方法获取）,<strong>值集</strong>（values()方法获取）,<strong>键值对集合</strong>（entrySet()方法获取）</li>
+</ol>
+<h3 id="2、Map接口的位置"><a href="#2、Map接口的位置" class="headerlink" title="2、Map接口的位置"></a>2、Map接口的位置</h3><p><code>java.util</code></p>
+<h3 id="3、Map接口的常用方法"><a href="#3、Map接口的常用方法" class="headerlink" title="3、Map接口的常用方法"></a>3、Map接口的常用方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()</span><br><span class="line">    返回此映射中包含的映射关系的 Set 视图。</span><br><span class="line"><span class="function">Set&lt;K&gt; <span class="title">keySet</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    返回此映射中包含的键的 Set 视图。</span></span><br><span class="line"><span class="function">Collection&lt;V&gt; <span class="title">values</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    返回此映射中包含的值的 Collection 视图。</span></span><br><span class="line"><span class="function">V <span class="title">put</span><span class="params">(K key,V value)</span></span></span><br><span class="line"><span class="function">    将指定的值与此映射中的指定键关联（可选操作）。</span></span><br><span class="line"><span class="function">V <span class="title">remove</span><span class="params">(Object key)</span></span></span><br><span class="line"><span class="function">    如果存在一个键的映射关系，则将其从此映射中移除（可选操作）。</span></span><br><span class="line"><span class="function">V <span class="title">get</span><span class="params">(Object key)</span></span></span><br><span class="line"><span class="function">    返回指定键所映射的值；如果此映射不包含该键的映射关系，则返回 <span class="keyword">null</span>。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、Map的遍历"><a href="#二、Map的遍历" class="headerlink" title="二、Map的遍历"></a>二、Map的遍历</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map集合的遍历方式1</span><br></pre></td></tr></table></figure>
+
+<p>Map集合的有两种遍历方式：</p>
+<ol>
+<li>键找值</li>
+<li>键值对</li>
+</ol>
+<h3 id="1、键找值（keySet-方法）"><a href="#1、键找值（keySet-方法）" class="headerlink" title="1、键找值（keySet()方法）"></a>1、键找值（keySet()方法）</h3><p>​    遍历的第一种方式就是用**keySet()**方法先获得Map集合中的所有的键集，再遍历获得的键集，在根据键获取相应的值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapDemo01</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//使用多态的形式创建Map集合对象</span></span><br><span class="line">		Map&lt;String , String&gt; map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">		<span class="comment">//添加元素</span></span><br><span class="line">		map.put(<span class="string">&quot;探险家&quot;</span>,<span class="string">&quot;伊泽瑞尔&quot;</span>);</span><br><span class="line">		map.put(<span class="string">&quot;黑暗之女&quot;</span>,<span class="string">&quot;安妮&quot;</span>);</span><br><span class="line">		map.put(<span class="string">&quot;蛮族之王&quot;</span>,<span class="string">&quot;泰达米尔&quot;</span>);</span><br><span class="line">		map.put(<span class="string">&quot;寒冰射手&quot;</span>,<span class="string">&quot;艾希&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//获取集合中所有的键</span></span><br><span class="line">		Set&lt;String&gt; keys = map.keySet();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">			String value = map.get(key);</span><br><span class="line">			System.out.println(key + <span class="string">&quot;~&quot;</span> + value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">探险家~伊泽瑞尔</span><br><span class="line">黑暗之女~安妮</span><br><span class="line">蛮族之王~泰达米尔</span><br><span class="line">寒冰射手~艾希</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、键值对（entrySet-方法）"><a href="#2、键值对（entrySet-方法）" class="headerlink" title="2、键值对（entrySet()方法）"></a>2、键值对（entrySet()方法）</h3><p>​    第二种遍历方式就是先用<strong>entrySet()方法</strong>获取集合中所有的映射关系，然后从映射关系中取出键和值。</p>
+<p>​    调用Map对象的<strong>entrySet()**方法获得存储在Map中所有映射的Set集合，这个集合中存放了</strong>Map.Entry类型<strong>的元素（Entry是Map的内部接口），</strong>每个Map.Entry对象代表Map中的一个键值对<strong>，然后迭代这个Set结合，获得每一个映射对象，并分别调用映射对象的</strong>getKey()<strong>和</strong>getValue()**方法获取键值对。</p>
+<h4 id="2-1、Map-Entry接口"><a href="#2-1、Map-Entry接口" class="headerlink" title="2.1、Map.Entry接口"></a>2.1、Map.Entry接口</h4><p>​    接口的特点<br>​         <strong>映射项（键-值对）</strong>。<br>​     接口的位置<br>​         <code>java.util.Map</code>里面的内部接口<br>​     接口的方法<br>​         <code>K getKey()</code><br>​             返回与此项对应的键。<br>​         <code>V getValue()</code><br>​             返回与此项对应的值。</p>
+<h4 id="2-2、使用entrySet进行遍历"><a href="#2-2、使用entrySet进行遍历" class="headerlink" title="2.2、使用entrySet进行遍历"></a>2.2、使用entrySet进行遍历</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapDemo02</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//使用多态的形式创建Map集合对象</span></span><br><span class="line">		Map&lt;String , String&gt; map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">		<span class="comment">//添加元素</span></span><br><span class="line">		map.put(<span class="string">&quot;探险家&quot;</span>,<span class="string">&quot;伊泽瑞尔&quot;</span>);</span><br><span class="line">		map.put(<span class="string">&quot;黑暗之女&quot;</span>,<span class="string">&quot;安妮&quot;</span>);</span><br><span class="line">		map.put(<span class="string">&quot;蛮族之王&quot;</span>,<span class="string">&quot;泰达米尔&quot;</span>);</span><br><span class="line">		map.put(<span class="string">&quot;寒冰射手&quot;</span>,<span class="string">&quot;艾希&quot;</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">//获取Map集合中键值对对象的集合</span></span><br><span class="line">		Set&lt;Map.Entry&lt;String, String&gt;&gt; objs = map.entrySet();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (Map.Entry&lt;String, String&gt; obj: objs) &#123;</span><br><span class="line">			String key = obj.getKey();</span><br><span class="line">			String value = obj.getValue();</span><br><span class="line">			System.out.println(key + <span class="string">&quot;~&quot;</span> + value);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">探险家~伊泽瑞尔</span><br><span class="line">黑暗之女~安妮</span><br><span class="line">蛮族之王~泰达米尔</span><br><span class="line">寒冰射手~艾希</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、Map的实现类"><a href="#三、Map的实现类" class="headerlink" title="三、Map的实现类"></a>三、Map的实现类</h2><h3 id="1、HashMap类"><a href="#1、HashMap类" class="headerlink" title="1、HashMap类"></a>1、HashMap类</h3><h4 id="1-1-类的特点"><a href="#1-1-类的特点" class="headerlink" title="1.1 类的特点"></a>1.1 类的特点</h4><ol>
+<li>HashMap类底层数据结构是”哈希表”<pre><code>JDK7.0(包含)以前:
+    数组+链表(数组中元素的数据类型是链表结构)
+JDK8.0(包含)以后:
+    数组+链表或数组+红黑树(数组中元素的数据类型可能是链表结构,也可能是红黑树结构)</code></pre>
+</li>
+<li>HashMap类<strong>允许null键和null值</strong>,在使用键和值的时候需要考虑非空校验,否则发生空指针异常</li>
+<li>HashMap类是<strong>无序的集合</strong></li>
+<li>HashMap类无法保证元素的顺序永远不会改变</li>
+<li>HashMap类是<strong>线程不安全</strong>的,适合单线程程序,如果在多线程中进行使用,需要手动添加线程安全处理</li>
+</ol>
+<h4 id="1-2-类的位置"><a href="#1-2-类的位置" class="headerlink" title="1.2 类的位置"></a>1.2 类的位置</h4><p><code>java.util</code></p>
+<h4 id="1-3-类的构造器"><a href="#1-3-类的构造器" class="headerlink" title="1.3 类的构造器"></a>1.3 类的构造器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    构造一个具有默认初始容量 <span class="params">(<span class="number">16</span>)</span> 和默认加载因子 <span class="params">(<span class="number">0.75</span>)</span> 的空 HashMap。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-4-类的方法"><a href="#1-4-类的方法" class="headerlink" title="1.4 类的方法"></a>1.4 类的方法</h4><p>​    同Map接口的常用方法</p>
+<h4 id="1-5-HashMap存储元素过程-基于JDK8-0源码分析"><a href="#1-5-HashMap存储元素过程-基于JDK8-0源码分析" class="headerlink" title="1.5 HashMap存储元素过程(基于JDK8.0源码分析):"></a>1.5 HashMap存储元素过程(基于JDK8.0源码分析):</h4><h5 id="1-名词解释"><a href="#1-名词解释" class="headerlink" title="1.名词解释"></a>1.名词解释</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">初始容量:HashMap集合底层数组的初始长度</span><br><span class="line">桶:HashMap集合底层数组中的元素</span><br><span class="line">加载因子:HashMap集合底层数组扩容依据的重要参数</span><br><span class="line">扩容标准:(int)(HashMap底层数组的长度 * 加载因子),在下一次元素的时候,进行数组长度扩容</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2-HashMap中变量和方法的备忘录"><a href="#2-HashMap中变量和方法的备忘录" class="headerlink" title="2. HashMap中变量和方法的备忘录"></a>2. HashMap中变量和方法的备忘录</h5><p>HashMap中的成员变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">DEFAULT_INITIAL_CAPACITY:数组默认初始长度</span><br><span class="line">MAXIMUM_CAPACITY:数组最大长度</span><br><span class="line">DEFAULT_LOAD_FACTOR:默认加载因子</span><br><span class="line">TREEIFY_THRESHOLD:树化标准之一(树化时链表长度)</span><br><span class="line">UNTREEIFY_THRESHOLD:链表化标准(链表化树形结构长度)</span><br><span class="line">MIN_TREEIFY_CAPACITY:树化标准之一(最小数组长度)</span><br><span class="line">table:底层数组</span><br><span class="line">entrySet:存储键值对对象的集合</span><br><span class="line">size:集合长度变量</span><br><span class="line">modCount:元素统计变量</span><br><span class="line">threshold:扩容标准变量</span><br><span class="line">loadFactor:加载因子变量</span><br></pre></td></tr></table></figure>
+
+
+
+<p>putVal()方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Node&lt;K,V&gt;[] tab:待操作的底层数组</span><br><span class="line">Node&lt;K,V&gt; p:待添加元素存储索引位置上的链表或红黑树</span><br><span class="line">int n:待操作的底层数组的长度</span><br><span class="line">int i:待添加元素的存储索引位置</span><br><span class="line">Node&lt;K,V&gt; e:待添加元素的链表形式</span><br><span class="line">K k</span><br></pre></td></tr></table></figure>
+
+
+
+<p>resize()方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Node&lt;K,V&gt;[] oldTab:原来的底层数组</span><br><span class="line">int oldCap:原来数组长度</span><br><span class="line">int oldThr:原来数组扩容标准</span><br><span class="line">int newCap:待扩容后的数组长度</span><br><span class="line">int newThr:待扩容后的数组扩容标准</span><br></pre></td></tr></table></figure>
+
+
+
+<p>treeifyBin()方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int n:待操作的底层数组的长度</span><br><span class="line">index</span><br><span class="line">Node&lt;K,V&gt; e</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-HashMap集合底层初始容量和初始加载因子"><a href="#3-HashMap集合底层初始容量和初始加载因子" class="headerlink" title="3. HashMap集合底层初始容量和初始加载因子"></a>3. HashMap集合底层初始容量和初始加载因子</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">初始容量和初始加载因子是多少取决于构造器</span><br><span class="line">    a.public HashMap()</span><br><span class="line">        初始容量:0,底层数组并没有初始化</span><br><span class="line">        初始加载因子:0.75</span><br><span class="line">    b.public HashMap(int initialCapacity)</span><br><span class="line">        初始容量:自定义</span><br><span class="line">        初始加载因子:0.75</span><br><span class="line">    c.public HashMap(int initialCapacity,float loadFactor)</span><br><span class="line">        初始容量:自定义</span><br><span class="line">        初始加载因子:自定义</span><br><span class="line">    d.public HashMap(Map&lt;? extends K,? extends V&gt; m)</span><br><span class="line">        初始容量:参数长度</span><br><span class="line">        初始加载因子:0.75</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="4-HashMap集合底层数组的扩容规则"><a href="#4-HashMap集合底层数组的扩容规则" class="headerlink" title="4. HashMap集合底层数组的扩容规则"></a>4. HashMap集合底层数组的扩容规则</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a.第一次添加元素</span><br><span class="line">    在HashMap集合第一次添加元素时,将底层数组的长度扩容至16</span><br><span class="line">b.后续添加元素</span><br><span class="line">    原来数组长度 &lt;&lt; 1 (这里用的是左移运算，因为位运算效率高)</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="5-HashMap集合如何确认待添加元素的索引位置"><a href="#5-HashMap集合如何确认待添加元素的索引位置" class="headerlink" title="5. HashMap集合如何确认待添加元素的索引位置"></a>5. HashMap集合如何确认待添加元素的索引位置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a.根据key的hashCode计算hash值</span><br><span class="line">    代码:key.hashCode() ^ (key.hashCode() &gt;&gt;&gt; 16)</span><br><span class="line">    含义:将key哈希码值二进制形式,前16位保持不变,后16为是高16位与低16位按位异或后值,新的二进制数的十进制形式就是hash值</span><br><span class="line">    作用:为了进一步将元素均匀分布在各桶之间</span><br><span class="line">b.根据hash值和数组长度获取元素索引位置</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="6-HashMap集合底层数组中元素的数据类型从链表结构转换成红黑树结构的时机-树化标准-需要多个条件同时满足"><a href="#6-HashMap集合底层数组中元素的数据类型从链表结构转换成红黑树结构的时机-树化标准-需要多个条件同时满足" class="headerlink" title="6. HashMap集合底层数组中元素的数据类型从链表结构转换成红黑树结构的时机(树化标准,需要多个条件同时满足)"></a>6. HashMap集合底层数组中元素的数据类型从链表结构转换成红黑树结构的时机(树化标准,需要多个条件同时满足)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a.添加后链表的长度达到8的时候</span><br><span class="line">b.底层数组的长度达到64</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="7-HashMap集合底层数组中元素的数据类型从红黑树结构转换成链表结构的时机-链表化标准"><a href="#7-HashMap集合底层数组中元素的数据类型从红黑树结构转换成链表结构的时机-链表化标准" class="headerlink" title="7.  HashMap集合底层数组中元素的数据类型从红黑树结构转换成链表结构的时机(链表化标准)"></a>7.  HashMap集合底层数组中元素的数据类型从红黑树结构转换成链表结构的时机(链表化标准)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a.红黑树结构中元素的个数达到6的时候</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="8-HashMap集合在JDK7-0和JDK8-0的区别"><a href="#8-HashMap集合在JDK7-0和JDK8-0的区别" class="headerlink" title="8. HashMap集合在JDK7.0和JDK8.0的区别"></a>8. HashMap集合在JDK7.0和JDK8.0的区别</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">a.数据结构算法不同</span><br><span class="line">    JDK7.<span class="number">0</span>(包含)以前:数组+链表的哈希表</span><br><span class="line">    JDK8.<span class="number">0</span>(包含)以后:数组+链表或数组+红黑树的哈希表</span><br><span class="line">b.底层数组的初始容量不同:</span><br><span class="line">    JDK7.<span class="number">0</span>(包含)以前:<span class="number">16</span></span><br><span class="line">    JDK8.<span class="number">0</span>(包含)以后:先不进行初始化,待第一次添加元素的时候初始化长度<span class="number">16</span></span><br><span class="line">c.底层数组类型不同:</span><br><span class="line">    JDK7.<span class="number">0</span>(包含)以前:Entry&lt;K,V&gt;[]</span><br><span class="line">    JDK8.<span class="number">0</span>(包含)以后:Node[]</span><br><span class="line">    源码为<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;，可知<span class="title">Node</span>是<span class="title">Entry</span>的实现类</span></span><br><span class="line">d.hash算法不同:</span><br><span class="line">    JDK7.<span class="number">0</span>(包含)以前:</span><br><span class="line">        h ^= k.hashCode();</span><br><span class="line">        h ^= (h &gt;&gt;&gt; <span class="number">20</span>) ^ (h &gt;&gt;&gt; <span class="number">12</span>);</span><br><span class="line">        h ^ (h &gt;&gt;&gt; <span class="number">7</span>) ^ (h &gt;&gt;&gt; <span class="number">4</span>);</span><br><span class="line">    JDK8.<span class="number">0</span>(包含)以后:</span><br><span class="line">        key.hashCode() ^ (key.hashCode() &gt;&gt;&gt; <span class="number">16</span>)</span><br><span class="line">e:扩容方式不同:</span><br><span class="line">    JDK7.<span class="number">0</span>(包含)以前:</span><br><span class="line">        <span class="number">2</span> * 原来数组长度</span><br><span class="line">    JDK8.<span class="number">0</span>(包含)以后:</span><br><span class="line">        原来数组长度 &lt;&lt; <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、LinkedHashMap类"><a href="#2、LinkedHashMap类" class="headerlink" title="2、LinkedHashMap类"></a>2、LinkedHashMap类</h3><h4 id="2-1-类的特点"><a href="#2-1-类的特点" class="headerlink" title="2.1  类的特点"></a>2.1  类的特点</h4><p>   1.LinkedHashMap集合的底层数据结构是<strong>哈希表+链表</strong></p>
+<ol start="2">
+<li>LinkedHashMap集合是<strong>有序的集合</strong></li>
+<li>LinkedHashMap集合<strong>底层的链表是维护元素有序的重要因素</strong></li>
+<li>LinkedHashMap集合<strong>可以存储null键和null值</strong></li>
+<li>LinkedHashMap集合是<strong>线程不安全的</strong>,适合单线程程序,如果在多线程中进行使用,需要线程安全处理</li>
+</ol>
+<h4 id="2-2-类的位置"><a href="#2-2-类的位置" class="headerlink" title="2.2  类的位置"></a>2.2  类的位置</h4><p><code>java.util</code></p>
+<h4 id="2-3-类的构造器"><a href="#2-3-类的构造器" class="headerlink" title="2.3  类的构造器"></a>2.3  类的构造器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedHashMap</span><span class="params">()</span></span></span><br><span class="line"><span class="function">             构造一个带默认初始容量 <span class="params">(<span class="number">16</span>)</span> 和加载因子 <span class="params">(<span class="number">0.75</span>)</span> 的空插入顺序 LinkedHashMap 实例。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-4-类的方法"><a href="#2-4-类的方法" class="headerlink" title="2.4  类的方法"></a>2.4  类的方法</h4><p>​    同Map集合的常用方法</p>
+<h3 id="3、TreeMap集合"><a href="#3、TreeMap集合" class="headerlink" title="3、TreeMap集合"></a>3、TreeMap集合</h3><h4 id="3-1-类的特点"><a href="#3-1-类的特点" class="headerlink" title="3.1  类的特点"></a>3.1  类的特点</h4><p>​    1.TreeMap集合底层的数据结构是<strong>红黑树</strong><br>​    2.TreeMap集合中<strong>元素必须实现比较器</strong><br>​    3.TreeMap集合<strong>键不允许null,值可以为nul</strong>l<br>​    4.Treemap集合是<strong>线程不安全的</strong>,适合单线程程序,如果在多线程中进行使用,需要实现线程安全</p>
+<h4 id="3-2-类的位置"><a href="#3-2-类的位置" class="headerlink" title="3.2  类的位置"></a>3.2  类的位置</h4><p><code>java.util</code></p>
+<h4 id="3-3-类的构造器"><a href="#3-3-类的构造器" class="headerlink" title="3.3  类的构造器"></a>3.3  类的构造器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeMap</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    使用键的自然顺序构造一个新的、空的树映射</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeMap</span><span class="params">(Comparator&lt;? <span class="keyword">super</span> K&gt; comparator)</span></span></span><br><span class="line"><span class="function">    构造一个新的、空的树映射，该映射根据给定比较器进行排序。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-4-类的方法"><a href="#3-4-类的方法" class="headerlink" title="3.4  类的方法"></a>3.4  类的方法</h4><p>​    同Map集合的常用方法</p>
+<h3 id="4、-Hashtable类"><a href="#4、-Hashtable类" class="headerlink" title="4、 Hashtable类"></a>4、 Hashtable类</h3><h4 id="4-1-类的特点"><a href="#4-1-类的特点" class="headerlink" title="4.1  类的特点"></a>4.1  类的特点</h4><pre><code>1. Hashtable集合底层的数据结构是**哈希表**
+ 2. Hashtable集合底层**不允许存储null键和null值**
+ 3. Hashtable集合**不可以存储重复key**
+ 4. Hashtable集合也是**无序的集合**
+ 5. Hashtable集合是**线程安全的**,适合多线程程序</code></pre>
+<h4 id="4-2-类的位置"><a href="#4-2-类的位置" class="headerlink" title="4.2  类的位置"></a>4.2  类的位置</h4><p><code>java.util</code></p>
+<h4 id="4-3-类的构造器"><a href="#4-3-类的构造器" class="headerlink" title="4.3  类的构造器"></a>4.3  类的构造器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Hashtable</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    用默认的初始容量 <span class="params">(<span class="number">11</span>)</span> 和加载因子 <span class="params">(<span class="number">0.75</span>)</span> 构造一个新的空哈希表。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-4-类的方法"><a href="#4-4-类的方法" class="headerlink" title="4.4  类的方法"></a>4.4  类的方法</h4><p>​    同Map集合的常用方法</p>
+<h2 id="四、HashMap集合和Hashtable集合的区别"><a href="#四、HashMap集合和Hashtable集合的区别" class="headerlink" title="四、HashMap集合和Hashtable集合的区别"></a>四、HashMap集合和Hashtable集合的区别</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1.线程安全性不同</span><br><span class="line">    HashMap:线程不安全</span><br><span class="line">    Hashtable:线程安全</span><br><span class="line">2.存储元素不同:</span><br><span class="line">    HashMap:可以存储null键和null值</span><br><span class="line">    Hashtable:不可以存储null键和null值</span><br><span class="line">3.底层数组的初始容量</span><br><span class="line">    HashMap:</span><br><span class="line">        JDK7.0(包含)以前:16</span><br><span class="line">        JDK8.0(包含)以后:null,在第一次添加元素时扩容为16</span><br><span class="line">    Hashtable:11</span><br><span class="line">4.底层数组的扩容规则不同</span><br><span class="line">    HashMap:</span><br><span class="line">        原来数组长度 &lt;&lt; 1</span><br><span class="line">    Hashtable:</span><br><span class="line">        (原来数组长度 &lt;&lt; 1) + 1</span><br></pre></td></tr></table></figure>
+ 
+
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/26/Set%E9%9B%86%E5%90%88%E7%AE%80%E8%BF%B0/" class="archive-article-date">
-  	<time datetime="2021-09-26T08:45:03.866Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/26/map%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2021-09-26T08:44:48.066Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/22/Java%E4%B8%8EScala%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%90%8C%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2021-09-22T12:45:50.133Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-22</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/18/List%E9%9B%86%E5%90%88/" class="archive-article-date">
-  	<time datetime="2021-09-18T14:32:36.292Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/18/scala%E4%B8%AD%E7%9A%84%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95%E8%87%B4%E7%AE%80%E5%8E%9F%E5%88%99/" class="archive-article-date">
-  	<time datetime="2021-09-18T01:34:15.840Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-18</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/15/%E5%AD%A6%E4%B9%A0Java%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%EF%BC%8C%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/" class="archive-article-date">
-  	<time datetime="2021-09-15T04:58:44.982Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-15</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/14/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2021-09-14T04:34:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/14/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/">JVM类加载机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/14/%E8%81%8A%E8%81%8A%E6%9E%9A%E4%B8%BE%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2021-09-14T04:30:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/14/%E8%81%8A%E8%81%8A%E6%9E%9A%E4%B8%BE%E7%B1%BB/">聊聊Java中的枚举类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/09/14/%E6%B5%85%E8%B0%88Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2021-09-13T18:03:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/09/14/%E6%B5%85%E8%B0%88Java%E4%B8%AD%E7%9A%84%E5%86%85%E9%83%A8%E7%B1%BB/">浅谈Java中的内部类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/09/23/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-09-23T04:34:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/09/23/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">动态代理</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">动态代理</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AOP</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/09/26/map%E9%9B%86%E5%90%88/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2021/09/26/Set%E9%9B%86%E5%90%88%E7%AE%80%E8%BF%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2021/09/22/Java%E4%B8%8EScala%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%8D%E5%90%8C%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Map%E9%9B%86%E5%90%88%E7%AE%80%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">Map集合简述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Map%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.1.</span> <span class="toc-text">一、Map接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81Map%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、Map接口的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81Map%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、Map接口的位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81Map%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">3、Map接口的常用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Map%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">1.2.</span> <span class="toc-text">二、Map的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E9%94%AE%E6%89%BE%E5%80%BC%EF%BC%88keySet-%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、键找值（keySet()方法）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E9%94%AE%E5%80%BC%E5%AF%B9%EF%BC%88entrySet-%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、键值对（entrySet()方法）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E3%80%81Map-Entry%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">2.1、Map.Entry接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2%E3%80%81%E4%BD%BF%E7%94%A8entrySet%E8%BF%9B%E8%A1%8C%E9%81%8D%E5%8E%86"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2.2、使用entrySet进行遍历</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81Map%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%B1%BB"><span class="toc-number">1.3.</span> <span class="toc-text">三、Map的实现类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81HashMap%E7%B1%BB"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、HashMap类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E7%B1%BB%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">1.1 类的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E7%B1%BB%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">1.2 类的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">1.3 类的构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">1.4 类的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-HashMap%E5%AD%98%E5%82%A8%E5%85%83%E7%B4%A0%E8%BF%87%E7%A8%8B-%E5%9F%BA%E4%BA%8EJDK8-0%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">1.3.1.5.</span> <span class="toc-text">1.5 HashMap存储元素过程(基于JDK8.0源码分析):</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-number">1.3.1.5.1.</span> <span class="toc-text">1.名词解释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-HashMap%E4%B8%AD%E5%8F%98%E9%87%8F%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E5%A4%87%E5%BF%98%E5%BD%95"><span class="toc-number">1.3.1.5.2.</span> <span class="toc-text">2. HashMap中变量和方法的备忘录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-HashMap%E9%9B%86%E5%90%88%E5%BA%95%E5%B1%82%E5%88%9D%E5%A7%8B%E5%AE%B9%E9%87%8F%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8A%A0%E8%BD%BD%E5%9B%A0%E5%AD%90"><span class="toc-number">1.3.1.5.3.</span> <span class="toc-text">3. HashMap集合底层初始容量和初始加载因子</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-HashMap%E9%9B%86%E5%90%88%E5%BA%95%E5%B1%82%E6%95%B0%E7%BB%84%E7%9A%84%E6%89%A9%E5%AE%B9%E8%A7%84%E5%88%99"><span class="toc-number">1.3.1.5.4.</span> <span class="toc-text">4. HashMap集合底层数组的扩容规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-HashMap%E9%9B%86%E5%90%88%E5%A6%82%E4%BD%95%E7%A1%AE%E8%AE%A4%E5%BE%85%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0%E7%9A%84%E7%B4%A2%E5%BC%95%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.3.1.5.5.</span> <span class="toc-text">5. HashMap集合如何确认待添加元素的索引位置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-HashMap%E9%9B%86%E5%90%88%E5%BA%95%E5%B1%82%E6%95%B0%E7%BB%84%E4%B8%AD%E5%85%83%E7%B4%A0%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BB%8E%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84%E8%BD%AC%E6%8D%A2%E6%88%90%E7%BA%A2%E9%BB%91%E6%A0%91%E7%BB%93%E6%9E%84%E7%9A%84%E6%97%B6%E6%9C%BA-%E6%A0%91%E5%8C%96%E6%A0%87%E5%87%86-%E9%9C%80%E8%A6%81%E5%A4%9A%E4%B8%AA%E6%9D%A1%E4%BB%B6%E5%90%8C%E6%97%B6%E6%BB%A1%E8%B6%B3"><span class="toc-number">1.3.1.5.6.</span> <span class="toc-text">6. HashMap集合底层数组中元素的数据类型从链表结构转换成红黑树结构的时机(树化标准,需要多个条件同时满足)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-HashMap%E9%9B%86%E5%90%88%E5%BA%95%E5%B1%82%E6%95%B0%E7%BB%84%E4%B8%AD%E5%85%83%E7%B4%A0%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%BB%8E%E7%BA%A2%E9%BB%91%E6%A0%91%E7%BB%93%E6%9E%84%E8%BD%AC%E6%8D%A2%E6%88%90%E9%93%BE%E8%A1%A8%E7%BB%93%E6%9E%84%E7%9A%84%E6%97%B6%E6%9C%BA-%E9%93%BE%E8%A1%A8%E5%8C%96%E6%A0%87%E5%87%86"><span class="toc-number">1.3.1.5.7.</span> <span class="toc-text">7.  HashMap集合底层数组中元素的数据类型从红黑树结构转换成链表结构的时机(链表化标准)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-HashMap%E9%9B%86%E5%90%88%E5%9C%A8JDK7-0%E5%92%8CJDK8-0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.1.5.8.</span> <span class="toc-text">8. HashMap集合在JDK7.0和JDK8.0的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81LinkedHashMap%E7%B1%BB"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、LinkedHashMap类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E7%B1%BB%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">2.1  类的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E7%B1%BB%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">2.2  类的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">2.3  类的构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">2.4  类的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81TreeMap%E9%9B%86%E5%90%88"><span class="toc-number">1.3.3.</span> <span class="toc-text">3、TreeMap集合</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E7%B1%BB%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">3.1  类的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E7%B1%BB%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">3.2  类的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">3.3  类的构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.3.4.</span> <span class="toc-text">3.4  类的方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81-Hashtable%E7%B1%BB"><span class="toc-number">1.3.4.</span> <span class="toc-text">4、 Hashtable类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E7%B1%BB%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">4.1  类的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E7%B1%BB%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">4.2  类的位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">1.3.4.3.</span> <span class="toc-text">4.3  类的构造器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-%E7%B1%BB%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.4.4.</span> <span class="toc-text">4.4  类的方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81HashMap%E9%9B%86%E5%90%88%E5%92%8CHashtable%E9%9B%86%E5%90%88%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.</span> <span class="toc-text">四、HashMap集合和Hashtable集合的区别</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: "http://example.com/2021/09/26/map%E9%9B%86%E5%90%88/", 
+    sourceId: "map集合",
+    productKey: "true",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -502,8 +492,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
